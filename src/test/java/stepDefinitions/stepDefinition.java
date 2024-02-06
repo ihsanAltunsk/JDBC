@@ -8,6 +8,10 @@ import manage.QueryManage;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class stepDefinition {
     String query;
@@ -28,10 +32,30 @@ public class stepDefinition {
         int actualUserID = resultSet.getInt("user_id");
         int expectedUserID = 1;
 
-        Assert.assertEquals(expectedUserID,actualUserID);
+        assertEquals(expectedUserID,actualUserID);
     }
     @Given("Close the database connection.")
     public void close_the_database_connection() throws SQLException {
         JDBCReusableMethods.closeConnection();
+    }
+    @Given("Query02 Prepare and execute the query.")
+    public void query02_prepare_and_execute_the_query() throws SQLException {
+       query = queryManage.getQuery02();
+       resultSet= JDBCReusableMethods.getStatement().executeQuery(query);
+    }
+    @Given("ResultSet03 Process the results.")
+    public void result_set03_process_the_results() throws SQLException {
+        List<String> names = new ArrayList<>();
+        while (resultSet.next()){
+        String name = resultSet.getString("name");
+        names.add(name);
+        }
+        List<String> expectedNames = new ArrayList<>();
+        expectedNames.add("5 Minutes");
+        expectedNames.add("10 Minutes");
+
+        for (int i = 0; i < names.size(); i++) {
+            assertEquals(expectedNames.get(i),names.get(i));
+        }
     }
 }

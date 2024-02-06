@@ -8,7 +8,7 @@ Feature: SELECT QUERY EXECUTE
     * Query01 Prepare and execute the query.
     * ResultSet01 Process the results.
     * Close the database connection.
-
+  @query
   Scenario:Verify the "name" information of the first 2 records
            in the "cron_schedules" table within the database.
     * Query02 Prepare and execute the query.
