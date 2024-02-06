@@ -3,20 +3,19 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-
 public class ConfigReader {
 
     static Properties properties;
 
-    static {// static blok herseyden once calisir
-        String dosyaYolu= "configuration.properties";
+    static {
+        String filePath = "configuration.properties";
 
         try {
-            FileInputStream fis= new FileInputStream(dosyaYolu);
+            FileInputStream fis= new FileInputStream(filePath);
             properties= new Properties();
             properties.load(fis);
         } catch (IOException e) {
-            System.out.println("properties dosyasi okunamadi");
+            System.out.println("Properties could NOT read.");
         }
     }
     public static String getProperty(String key){
