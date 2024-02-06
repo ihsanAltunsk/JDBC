@@ -43,12 +43,19 @@ public class JDBC_testing {
         resultSet.next();
         System.out.println(resultSet.getString(2));
 
+        //Print the data in the next row.
         resultSet.next();
         System.out.println(resultSet.getString(2));
 
+        //Print the data in the next column of the same row "lastname".
         System.out.println(resultSet.getString("lastname"));
 
+        //Print the data in the 10th row for "firstname".
         resultSet.absolute(10);
         System.out.println( resultSet.getString("firstname"));
+
+        //Print the first data for "email"
+        resultSet.first();
+        resultSet.getString("email");
     }
 }
