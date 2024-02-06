@@ -32,7 +32,6 @@ public class stepDefinition {
         resultSet.next();
         int actualUserID = resultSet.getInt("user_id");
         int expectedUserID = 1;
-
         assertEquals(expectedUserID,actualUserID);
     }
     @Given("Close the database connection.")
@@ -51,6 +50,7 @@ public class stepDefinition {
         String name = resultSet.getString("name");
         names.add(name);
         }
+
         List<String> expectedNames = new ArrayList<>();
         expectedNames.add("5 Minutes");
         expectedNames.add("10 Minutes");
