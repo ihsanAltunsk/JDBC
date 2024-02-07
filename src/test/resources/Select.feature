@@ -12,5 +12,12 @@ Feature: SELECT QUERY EXECUTE
   Scenario:Verify the "name" information of the first 2 records
            in the "cron_schedules" table within the database.
     * Query02 Prepare and execute the query.
+    * ResultSet02 Process the results.
+    * Close the database connection.
+
+  Scenario:Verify the "firstname" and "lastname" information of the data in the
+           "Users" table on the database that does not have "country_code=TR"
+           and has "id=11".
+    * Query03 Prepare and execute the query.
     * ResultSet03 Process the results.
     * Close the database connection.
