@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class JDBCReusableMethods {
 
-   public static Connection connection;
+    public static Connection connection;
     private static Statement statement;
     private static ResultSet resultSet;
 
@@ -26,12 +26,17 @@ public class JDBCReusableMethods {
     }
 
 
-    public static void updateQuery(String query) throws SQLException {
+    public static int updateQuery(String query) throws SQLException {
+        getConnection();
+        getStatement();
 
-        int st =  statement.executeUpdate(query);
+        int affectedRows = statement.executeUpdate(query);
 
-        System.out.println(st);
+        System.out.println(affectedRows);
+        return affectedRows;
     }
+
+
 
 
     public static synchronized void update(String query) throws SQLException {
@@ -103,6 +108,7 @@ public class JDBCReusableMethods {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
         return connection;
     }
 
@@ -223,7 +229,7 @@ public class JDBCReusableMethods {
      */
 
 
-    
+
     public static List<Map<String, Object>> getQueryResultMap(String query) {
         executeQuery(query);
         List<Map<String, Object>> rowList = new ArrayList<>();

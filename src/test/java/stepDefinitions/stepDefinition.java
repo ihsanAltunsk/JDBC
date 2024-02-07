@@ -100,8 +100,8 @@ public class stepDefinition {
         }
     }
 
-    @Given("Update Query01 Prepare and execute the query.")
-    public void update_query01_prepare_and_execute_the_query() throws SQLException {
+    @Given("Update Query05 Prepare and execute the query.")
+    public void update_query05_prepare_and_execute_the_query() throws SQLException {
         query= queryManage.getUpdateQuery05();
         rowCount = JDBCReusableMethods.getStatement().executeUpdate(query);
     }

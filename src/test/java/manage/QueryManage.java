@@ -18,7 +18,5 @@ package manage;
         }
         public String getQuery03() {return query03;}
         public String getQuery04() {return query04;}
-        public String getUpdateQuery05() {
-            return UpdateQuery05;
-        }
+        public String getUpdateQuery05() {return UpdateQuery05;}
     }
