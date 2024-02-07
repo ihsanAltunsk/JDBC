@@ -19,6 +19,7 @@ public class stepDefinition {
     int rowCount;
     QueryManage queryManage = new QueryManage();
     ResultSet resultSet;
+    PreparedStatement preparedStatement;
 
 
     @Given("Establish a database connection.")
@@ -107,5 +108,20 @@ public class stepDefinition {
     @Given("preparedQuery05 Validate the results.")
     public void prepared_query05_validate_the_results() {
 
+    }
+    @Given("preparedQuery06 Prepare and execute the query.")
+    public void prepared_query06_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getPreparedQuery06();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
+        preparedStatement.setInt(1,101);
+        preparedStatement.setString(2,"email33@gmail.com");
+        preparedStatement.setString(3,"125478");
+        preparedStatement.setInt(4,1);
+        preparedStatement.executeUpdate();
+    }
+    @Given("preparedQuery06 Validate the results.")
+    public void prepared_query06_validate_the_results() {
+        assertEquals(1,rowCount);
     }
 }

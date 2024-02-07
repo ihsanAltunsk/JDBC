@@ -9,6 +9,9 @@ package manage;
         private String query04 = "SELECT user_id, group_concat(browser, ' - ', os) AS browser_os FROM user_logins GROUP BY user_id";
         private String UpdateQuery05 = "update users set mobile= 987654321 where username like '%e_'";
         private String preparedQuery05 = "update users set mobile= ? where username like '%e_'";
+        private String preparedQuery06 ="INSERT INTO admin_password_resets (id, email, token, status) VALUES (?, ?, ?, ?)";
+
+
 
         //*********Getter**********
         public String getQuery01() {
@@ -17,11 +20,19 @@ package manage;
         public String getQuery02() {
             return query02;
         }
-        public String getQuery03() {return query03;}
-        public String getQuery04() {return query04;}
-        public String getUpdateQuery05() {return UpdateQuery05;}
-
+        public String getQuery03() {
+            return query03;
+        }
+        public String getQuery04() {
+            return query04;
+        }
+        public String getUpdateQuery05() {
+            return UpdateQuery05;
+        }
         public String getPreparedQuery05() {
             return preparedQuery05;
+        }
+        public String getPreparedQuery06() {
+            return preparedQuery06;
         }
     }
