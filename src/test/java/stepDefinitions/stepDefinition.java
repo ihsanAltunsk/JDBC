@@ -73,10 +73,24 @@ public class stepDefinition {
     }
     @Given("ResultSet03 Process the results.")
     public void result_set03_process_the_results() throws SQLException {
-        String expectedName = "Mehmet Genc";
+        String expectedName = "Mehmet Genç";
         resultSet.next();
         String actualName = resultSet.getString("firstname") + " " + resultSet.getString("lastname");
         assertEquals(expectedName,actualName);
     }
+    @Given("Query04 Prepare and execute the query.")
+    public void query04_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getQuery04();
+        resultSet = JDBCReusableMethods.getStatement().executeQuery(query);
+    }
+    @Given("ResultSet04 Process the results.")
+    public void result_set04_process_the_results() throws SQLException {
+        while(resultSet.next()){
+            String user_id = resultSet.getString("user_id");
+            String browserOS = resultSet.getString("browser_os");
 
+            System.out.println("User id: " + user_id);
+            System.out.println("Browser & OS: " + browserOS);
+        }
+    }
 }

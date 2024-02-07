@@ -21,3 +21,11 @@ Feature: SELECT QUERY EXECUTE
     * Query03 Prepare and execute the query.
     * ResultSet03 Process the results.
     * Close the database connection.
+
+    @query
+    Scenario: Group the browsers and operating systems used for logins into
+              the system based on user_ids in the "user_logins" table and
+              display them on the screen.
+      * Query04 Prepare and execute the query.
+      * ResultSet04 Process the results.
+      * Close the database connection.
