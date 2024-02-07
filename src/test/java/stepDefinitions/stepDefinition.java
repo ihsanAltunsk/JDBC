@@ -93,7 +93,7 @@ public class stepDefinition {
     }
     @Given("UpdateQuery05 Prepare and execute the query.")
     public void update_query05_prepare_and_execute_the_query() throws SQLException {
-        query= queryManage.getUpdateQuery05();
+        query = queryManage.getUpdateQuery05();
         rowCount = JDBCReusableMethods.getStatement().executeUpdate(query);
         rowCount = JDBCReusableMethods.updateQuery(query);
     }
@@ -102,23 +102,29 @@ public class stepDefinition {
         assertEquals(18,rowCount);
     }
     @Given("preparedQuery05 Prepare and execute the query.")
-    public void prepared_query05_prepare_and_execute_the_query() {
+    public void prepared_query05_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getPreparedQuery05();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1, 444444444);
+        preparedStatement.setString(2, "%e_");
 
+        rowCount = preparedStatement.executeUpdate();
     }
     @Given("preparedQuery05 Validate the results.")
     public void prepared_query05_validate_the_results() {
-
+        assertEquals(18,rowCount);
     }
     @Given("preparedQuery06 Prepare and execute the query.")
     public void prepared_query06_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getPreparedQuery06();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
 
-        preparedStatement.setInt(1,101);
+        // INSERT INTO admin_password_resets (id,email,token,status) VALUES (?,?,?,?);
+        preparedStatement.setInt(1,106);
         preparedStatement.setString(2,"email33@gmail.com");
         preparedStatement.setString(3,"125478");
         preparedStatement.setInt(4,1);
-        preparedStatement.executeUpdate();
+        rowCount = preparedStatement.executeUpdate();
     }
     @Given("preparedQuery06 Validate the results.")
     public void prepared_query06_validate_the_results() {
