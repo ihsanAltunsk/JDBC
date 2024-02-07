@@ -35,7 +35,8 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="3e35cd49-5296-4722-ac2b-e2ab5923a14c">
-      <console name="wiseDB" type="STANDARD" schema="" session="Main"><![CDATA[SELECT user_id, group_concat(browser, ' - ', os) AS browser_os FROM user_logins GROUP BY user_id]]></console>
+      <console name="wiseDB" type="STANDARD" schema="" session="Main"><![CDATA[SELECT mobile FROM users 
+UPDATE users SET mobile= 987654321 WHERE username LIKE '%e_']]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

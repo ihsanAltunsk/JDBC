@@ -32,7 +32,7 @@ public class JDBCReusableMethods {
 
         int affectedRows = statement.executeUpdate(query);
 
-        System.out.println(affectedRows);
+        System.out.println(affectedRows + " rows updated.");
         return affectedRows;
     }
 

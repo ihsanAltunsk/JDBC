@@ -11,7 +11,7 @@ Feature:
 
   Scenario: Update the "mobile" numbers of the usernames in the
             "users" table whose usernames have the second-to-last
-             letter as 'e'.* Update Query05 Prepare and execute the query.
+             letter as 'e'.
     * preparedQuery05 Prepare and execute the query.
     * preparedQuery05 Validate the results.
     * Close the database connection.

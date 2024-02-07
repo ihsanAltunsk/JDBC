@@ -29,7 +29,16 @@ public class stepDefinition {
     @Given("Query01 Prepare and execute the query.")
     public void query01_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQuery01();
+
+        // OPTION 1
+        query = queryManage.getQuery01();
         resultSet = JDBCReusableMethods.getStatement().executeQuery(query);
+
+        // OPTION 2
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,100);
+        preparedStatement.setInt(2,500);
+        resultSet = preparedStatement.executeQuery();
     }
     @Given("ResultSet01 Process the results.")
     public void result_set01_process_the_results() throws SQLException {
@@ -42,6 +51,7 @@ public class stepDefinition {
     public void close_the_database_connection() throws SQLException {
         JDBCReusableMethods.closeConnection();
     }
+// --------------------------------------------------------------------------------------------------
     @Given("Query02 Prepare and execute the query.")
     public void query02_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQuery02();
@@ -63,19 +73,21 @@ public class stepDefinition {
             assertEquals(expectedNames.get(i), names.get(i));
         }
     }
+// --------------------------------------------------------------------------------------------------
     @Given("Query03 Prepare and execute the query.")
     public void query03_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQuery03();
         resultSet = JDBCReusableMethods.getStatement().executeQuery(query);
-
     }
     @Given("ResultSet03 Process the results.")
     public void result_set03_process_the_results() throws SQLException {
         String expectedName = "Mehmet Genç";
         resultSet.next();
-        String actualName = resultSet.getString("firstname") + " " + resultSet.getString("lastname");
+        String actualName = resultSet.getString("firstname") +
+                " " + resultSet.getString("lastname");
         assertEquals(expectedName, actualName);
     }
+// --------------------------------------------------------------------------------------------------
     @Given("Query04 Prepare and execute the query.")
     public void query04_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQuery04();
@@ -91,6 +103,7 @@ public class stepDefinition {
             System.out.println("Browser & OS: " + browserOS);
         }
     }
+// --------------------------------------------------------------------------------------------------
     @Given("UpdateQuery05 Prepare and execute the query.")
     public void update_query05_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getUpdateQuery05();
@@ -101,6 +114,7 @@ public class stepDefinition {
     public void update_query05_validate_the_results() {
         assertEquals(18,rowCount);
     }
+// --------------------------------------------------------------------------------------------------
     @Given("preparedQuery05 Prepare and execute the query.")
     public void prepared_query05_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getPreparedQuery05();
@@ -114,6 +128,7 @@ public class stepDefinition {
     public void prepared_query05_validate_the_results() {
         assertEquals(18,rowCount);
     }
+// --------------------------------------------------------------------------------------------------
     @Given("preparedQuery06 Prepare and execute the query.")
     public void prepared_query06_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getPreparedQuery06();
@@ -130,4 +145,6 @@ public class stepDefinition {
     public void prepared_query06_validate_the_results() {
         assertEquals(1,rowCount);
     }
+// --------------------------------------------------------------------------------------------------
+
 }
