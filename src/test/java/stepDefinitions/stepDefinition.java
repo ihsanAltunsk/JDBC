@@ -25,13 +25,11 @@ public class stepDefinition {
     public void establish_a_database_connection() {
         JDBCReusableMethods.createConnection();
     }
-
     @Given("Query01 Prepare and execute the query.")
     public void query01_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQuery01();
         resultSet = JDBCReusableMethods.getStatement().executeQuery(query);
     }
-
     @Given("ResultSet01 Process the results.")
     public void result_set01_process_the_results() throws SQLException {
         resultSet.next();
@@ -39,18 +37,15 @@ public class stepDefinition {
         int expectedUserID = 1;
         assertEquals(expectedUserID, actualUserID);
     }
-
     @Given("Close the database connection.")
     public void close_the_database_connection() throws SQLException {
         JDBCReusableMethods.closeConnection();
     }
-
     @Given("Query02 Prepare and execute the query.")
     public void query02_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQuery02();
         resultSet = JDBCReusableMethods.getStatement().executeQuery(query);
     }
-
     @Given("ResultSet02 Process the results.")
     public void result_set02_process_the_results() throws SQLException {
         List<String> names = new ArrayList<>();
@@ -67,14 +62,12 @@ public class stepDefinition {
             assertEquals(expectedNames.get(i), names.get(i));
         }
     }
-
     @Given("Query03 Prepare and execute the query.")
     public void query03_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQuery03();
         resultSet = JDBCReusableMethods.getStatement().executeQuery(query);
 
     }
-
     @Given("ResultSet03 Process the results.")
     public void result_set03_process_the_results() throws SQLException {
         String expectedName = "Mehmet Genç";
@@ -82,13 +75,11 @@ public class stepDefinition {
         String actualName = resultSet.getString("firstname") + " " + resultSet.getString("lastname");
         assertEquals(expectedName, actualName);
     }
-
     @Given("Query04 Prepare and execute the query.")
     public void query04_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQuery04();
         resultSet = JDBCReusableMethods.getStatement().executeQuery(query);
     }
-
     @Given("ResultSet04 Process the results.")
     public void result_set04_process_the_results() throws SQLException {
         while (resultSet.next()) {
@@ -99,13 +90,13 @@ public class stepDefinition {
             System.out.println("Browser & OS: " + browserOS);
         }
     }
-
     @Given("Update Query05 Prepare and execute the query.")
     public void update_query05_prepare_and_execute_the_query() throws SQLException {
         query= queryManage.getUpdateQuery05();
         rowCount = JDBCReusableMethods.getStatement().executeUpdate(query);
-    }
+        rowCount = JDBCReusableMethods.updateQuery(query);
 
+    }
     @Given("Process the results.")
     public void process_the_results() {
         assertEquals(18,rowCount);
