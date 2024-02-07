@@ -23,13 +23,11 @@ public class stepDefinition {
     public void establish_a_database_connection() {
         JDBCReusableMethods.createConnection();
     }
-
     @Given("Query01 Prepare and execute the query.")
     public void query01_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQuery01();
         resultSet = JDBCReusableMethods.getStatement().executeQuery(query);
     }
-
     @Given("ResultSet01 Process the results.")
     public void result_set01_process_the_results() throws SQLException {
         resultSet.next();
@@ -37,18 +35,15 @@ public class stepDefinition {
         int expectedUserID = 1;
         assertEquals(expectedUserID, actualUserID);
     }
-
     @Given("Close the database connection.")
     public void close_the_database_connection() throws SQLException {
         JDBCReusableMethods.closeConnection();
     }
-
     @Given("Query02 Prepare and execute the query.")
     public void query02_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQuery02();
         resultSet = JDBCReusableMethods.getStatement().executeQuery(query);
     }
-
     @Given("ResultSet02 Process the results.")
     public void result_set02_process_the_results() throws SQLException {
         List<String> names = new ArrayList<>();
@@ -93,4 +88,5 @@ public class stepDefinition {
             System.out.println("Browser & OS: " + browserOS);
         }
     }
+
 }
