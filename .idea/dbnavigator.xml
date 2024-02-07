@@ -17,14 +17,17 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="3e35cd49-5296-4722-ac2b-e2ab5923a14c">
-      <console name="wiseDB" type="STANDARD" schema="" session="Main"><![CDATA[SELECT * FROM users;]]></console>
+      <console name="wiseDB" type="STANDARD" schema="" session="Main"><![CDATA[SELECT * FROM users;
+sel]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="3e35cd49-5296-4722-ac2b-e2ab5923a14c" object-ref="consoles/wiseDB" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="3e35cd49-5296-4722-ac2b-e2ab5923a14c" />
