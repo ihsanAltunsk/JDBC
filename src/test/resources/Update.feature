@@ -6,5 +6,5 @@ Feature:
             "users" table whose usernames have the second-to-last
             letter as 'e'.
     * Update Query01 Prepare and execute the query.
-    * ResultSet01 Process the results.
+    * Process the results.
     * Close the database connection.
