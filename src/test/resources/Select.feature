@@ -22,7 +22,6 @@ Feature: SELECT QUERY EXECUTE
     * ResultSet03 Process the results.
     * Close the database connection.
 
-    @query
     Scenario: Group the browsers and operating systems used for logins into
               the system based on user_ids in the "user_logins" table and
               display them on the screen.
