@@ -15,6 +15,11 @@ public class JDBC_testing {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // 1- ADD THE CORRECT DRIVER.
         Class.forName("com.mysql.cj.jdbc.Driver");
+/*
+        IT IS NOT MANDATORY TO DO SO. HOWEVER,
+        IF WRITTEN, IT IS ESSENTIAL THAT THE STRING
+        VALUE IS CORRECTLY WRITTEN; OTHERWISE, IT WILL NOT WORK.
+*/
 
         // 2- INITIATE THE CONNECTION WITH THE DATABASE.
         Connection connection = DriverManager.getConnection("jdbc:mysql://45.87.83.5/u168183796_qaloantec",
