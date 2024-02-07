@@ -90,15 +90,22 @@ public class stepDefinition {
             System.out.println("Browser & OS: " + browserOS);
         }
     }
-    @Given("Update Query05 Prepare and execute the query.")
+    @Given("UpdateQuery05 Prepare and execute the query.")
     public void update_query05_prepare_and_execute_the_query() throws SQLException {
         query= queryManage.getUpdateQuery05();
         rowCount = JDBCReusableMethods.getStatement().executeUpdate(query);
         rowCount = JDBCReusableMethods.updateQuery(query);
+    }
+    @Given("UpdateQuery05 Validate the results.")
+    public void update_query05_validate_the_results() {
+        assertEquals(18,rowCount);
+    }
+    @Given("preparedQuery05 Prepare and execute the query.")
+    public void prepared_query05_prepare_and_execute_the_query() {
 
     }
-    @Given("Process the results.")
-    public void process_the_results() {
-        assertEquals(18,rowCount);
+    @Given("preparedQuery05 Validate the results.")
+    public void prepared_query05_validate_the_results() {
+
     }
 }

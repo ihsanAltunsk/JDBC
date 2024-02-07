@@ -8,6 +8,7 @@ package manage;
         private String query03 = "SELECT firstname,lastname FROM users WHERE country_code NOT LIKE 'TR' AND id=11";
         private String query04 = "SELECT user_id, group_concat(browser, ' - ', os) AS browser_os FROM user_logins GROUP BY user_id";
         private String UpdateQuery05 = "update users set mobile= 987654321 where username like '%e_'";
+        private String preparedQuery05 = "update users set mobile= ? where username like '%e_'";
 
         //*********Getter**********
         public String getQuery01() {
@@ -19,4 +20,8 @@ package manage;
         public String getQuery03() {return query03;}
         public String getQuery04() {return query04;}
         public String getUpdateQuery05() {return UpdateQuery05;}
+
+        public String getPreparedQuery05() {
+            return preparedQuery05;
+        }
     }
