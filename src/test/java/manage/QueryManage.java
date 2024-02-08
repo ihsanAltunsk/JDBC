@@ -11,10 +11,11 @@ public class QueryManage {
         private String UpdateQuery05 = "UPDATE users SET mobile= 987654321 WHERE username LIKE '%e_'";
         private String preparedQuery05 = "UPDATE users SET mobile= ? WHERE username LIKE ?";
         private String preparedQuery06 = "INSERT INTO admin_password_resets (id, email, token, status) VALUES (?, ?, ?, ?)";
+        private String preparedQuery07 = "UPDATE admin_notifications SET is_read = ? WHERE id = ? ";
 
 
 
-        //*********Getter**********
+    //*********Getter**********
         public String getQuery01() {
             return query01;
         }
@@ -36,4 +37,7 @@ public class QueryManage {
         public String getPreparedQuery06() {
             return preparedQuery06;
         }
+        public String getPreparedQuery07() {
+        return preparedQuery07;
     }
+}

@@ -146,5 +146,16 @@ public class stepDefinition {
         assertEquals(1,rowCount);
     }
 // --------------------------------------------------------------------------------------------------
-
+    @Given("preparedQuery07 Prepare and execute the query.")
+    public void prepared_query07_prepare_and_execute_the_query() throws SQLException {
+    query = queryManage.getPreparedQuery07();
+    preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+    preparedStatement.setInt(1,1);
+    preparedStatement.setInt(2,773);
+    rowCount = preparedStatement.executeUpdate();
+    }
+    @Given("preparedQuery07 Validate the results.")
+    public void prepared_query07_validate_the_results() {
+        assertEquals(1,rowCount);
+    }
 }
