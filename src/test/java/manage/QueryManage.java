@@ -7,10 +7,13 @@ public class QueryManage {
         private String query03 = "SELECT firstname,lastname FROM users WHERE country_code NOT LIKE 'TR' AND id=11";
         private String query04 = "SELECT user_id, GROUP_CONCAT(browser, ' - ', os) AS browser_os FROM user_logins GROUP BY user_id";
         private String UpdateQuery05 = "UPDATE users SET mobile= 987654321 WHERE username LIKE '%e_'";
-        private String preparedQuery05 = "UPDATE users SET mobile= ? WHERE username LIKE ?";
+        private String updatePreparedQuery05 = "UPDATE users SET mobile= ? WHERE username LIKE ?";
         private String insertPreparedQuery06 = "INSERT INTO admin_password_resets (id, email, token, status) VALUES (?, ?, ?, ?)";
-        private String preparedQuery07 = "UPDATE admin_notifications SET is_read = ? WHERE id = ? ";
+        private String updatepreparedQuery07 = "UPDATE admin_notifications SET is_read = ? WHERE id = ? ";
         private String insertPreparedQuery08 = "INSERT INTO update_logs (id, version, update_log, created_at) VALUES(?, ?, ?, ?)";
+        private String updatePreparedQuery08 = "UPDATE update_logs SET update_log = ? WHERE version = ? AND id = ?";
+        private String DeletePreparedQuery09 = "DELETE FROM update_logs WHERE id = ?";
+
 
     //*********Getter**********
         public String getQuery01() {
@@ -28,17 +31,25 @@ public class QueryManage {
         public String getUpdateQuery05() {
             return UpdateQuery05;
         }
-        public String getPreparedQuery05() {
-            return preparedQuery05;
+        public String getUpdatePreparedQuery05() {
+            return updatePreparedQuery05;
         }
         public String getInsertPreparedQuery06() {
             return insertPreparedQuery06;
         }
-        public String getPreparedQuery07() {
-        return preparedQuery07;
+        public String getUpdatepreparedQuery07() {
+        return updatepreparedQuery07;
     }
 
     public String getInsertPreparedQuery08() {
         return insertPreparedQuery08;
+    }
+
+    public String getUpdatePreparedQuery08() {
+        return updatePreparedQuery08;
+    }
+
+    public String getDeletePreparedQuery09() {
+        return DeletePreparedQuery09;
     }
 }

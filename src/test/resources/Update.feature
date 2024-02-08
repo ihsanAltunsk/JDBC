@@ -30,7 +30,14 @@ Feature:
 
   Scenario: Update and verify the 'update_log' value of the data
             in the 'update_logs' table where 'version=?' and 'id=?'.
-    * Prepare and execute an insert query for the 'update_logs' table.
-    * Modify the update log value of the data inserted into the 'update_logs' table.
+    * Prepare and execute an insert query for the update_logs table.
+    * Modify the update log value of the data inserted into the update_logs table.
     * Confirm the change in the update log value.
+    * Close the database connection.
+
+  Scenario: Delete a record in the "update_logs" table based on the
+            value of "id=?" and confirm that it has been deleted.
+    * Prepare and execute an insert query for the update_logs table.
+    * Delete the data inserted into the update_logs table.
+    * Confirm the deletion.
     * Close the database connection.

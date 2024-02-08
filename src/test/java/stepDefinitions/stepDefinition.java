@@ -5,9 +5,11 @@ import io.cucumber.java.en.Given;
 import utilities.JDBCReusableMethods;
 import manage.QueryManage;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,7 +119,7 @@ public class stepDefinition {
 // --------------------------------------------------------------------------------------------------
     @Given("preparedQuery05 Prepare and execute the query.")
     public void prepared_query05_prepare_and_execute_the_query() throws SQLException {
-        query = queryManage.getPreparedQuery05();
+        query = queryManage.getUpdatePreparedQuery05();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
         preparedStatement.setInt(1, 444444444);
         preparedStatement.setString(2, "%e_");
@@ -126,7 +128,7 @@ public class stepDefinition {
     }
     @Given("preparedQuery05 Validate the results.")
     public void prepared_query05_validate_the_results() {
-        assertEquals(18,rowCount);
+        assertEquals(18, rowCount);
     }
 // --------------------------------------------------------------------------------------------------
     @Given("preparedQuery06 Prepare and execute the query.")
@@ -143,12 +145,12 @@ public class stepDefinition {
     }
     @Given("preparedQuery06 Validate the results.")
     public void prepared_query06_validate_the_results() {
-        assertEquals(1,rowCount);
+        assertEquals(1, rowCount);
     }
 // --------------------------------------------------------------------------------------------------
     @Given("preparedQuery07 Prepare and execute the query.")
     public void prepared_query07_prepare_and_execute_the_query() throws SQLException {
-    query = queryManage.getPreparedQuery07();
+    query = queryManage.getUpdatepreparedQuery07();
     preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
     preparedStatement.setInt(1,1);
     preparedStatement.setInt(2,773);
@@ -156,10 +158,60 @@ public class stepDefinition {
     }
     @Given("preparedQuery07 Validate the results.")
     public void prepared_query07_validate_the_results() {
+        assertEquals(1, rowCount);
+    }
+// --------------------------------------------------------------------------------------------------
+    @Given("Prepare and execute an insert query for the update_logs table.")
+    public void prepare_and_execute_an_insert_query_for_the_table() throws SQLException {
+        query = queryManage.getInsertPreparedQuery08();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        id = faker.number().numberBetween(450,550);
+        version = faker.options().option("Windows 10", "MacOs Ventura", "Linux");
+        updateLog = faker.lorem().sentence(1);
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, version);
+        preparedStatement.setString(3, updateLog);
+        preparedStatement.setDate(4, Date.valueOf(LocalDate.now()));
+
+        rowCount = preparedStatement.executeUpdate();
+
+        int flag = 0;
+        if (rowCount > 0 ){
+            flag++;
+        }else {
+            System.out.println("UPDATE FAILED!");
+        }
+        rowCount = 0;
+        assertEquals(1,flag);
+    }
+
+    @Given("Modify the update log value of the data inserted into the update_logs table.")
+    public void modify_the_update_log_value_of_the_data_inserted_into_the_table() throws SQLException {
+        query = queryManage.getUpdatePreparedQuery08();
+        String updatedLog = "Updated Log";
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setString(1,updatedLog);
+        preparedStatement.setString(2,version);
+        preparedStatement.setInt(3,id);
+
+        rowCount = preparedStatement.executeUpdate();
+    }
+    @Given("Confirm the change in the update log value.")
+    public void confirm_the_change_in_the_update_log_value() {
         assertEquals(1,rowCount);
     }
 // --------------------------------------------------------------------------------------------------
+    @Given("Delete the data inserted into the update_logs table.")
+    public void delete_the_data_inserted_into_the_update_logs_table() throws SQLException {
+        query = queryManage.getDeletePreparedQuery09();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,id);
 
-
-
+        rowCount = preparedStatement.executeUpdate();
+    }
+    @Given("Confirm the deletion.")
+    public void confirm_the_deletion() {
+        assertEquals(1,rowCount);
+    }
 }

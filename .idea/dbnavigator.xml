@@ -39,7 +39,6 @@
 UPDATE users SET mobile= 987654321 WHERE username LIKE '%e_'
 UPDATE admin_notifications SET is_read = 1 WHERE is_read = 0 LIMIT 1
 UPDATE update_logs SET update_log = ? WHERE version = ? AND id = ?
-INSERT INTO update_logs VALUES(,'İhsan Altunışık', '100', 'İzmir', '2024-01-24')
 INSERT INTO update_logs (id, version, update_log, created_at) VALUES(?, ?, ?, ?);]]></console>
     </connection>
   </component>
