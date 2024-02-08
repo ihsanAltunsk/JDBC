@@ -1,8 +1,7 @@
 package stepDefinitions;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import org.junit.Assert;
 import utilities.JDBCReusableMethods;
 import manage.QueryManage;
 
@@ -15,11 +14,12 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class stepDefinition {
-    String query;
-    int rowCount;
+    String query, version, updateLog;
+    int rowCount, id;
     QueryManage queryManage = new QueryManage();
     ResultSet resultSet;
     PreparedStatement preparedStatement;
+    Faker faker= new Faker();
 
 
     @Given("Establish a database connection.")
@@ -131,7 +131,7 @@ public class stepDefinition {
 // --------------------------------------------------------------------------------------------------
     @Given("preparedQuery06 Prepare and execute the query.")
     public void prepared_query06_prepare_and_execute_the_query() throws SQLException {
-        query = queryManage.getPreparedQuery06();
+        query = queryManage.getInsertPreparedQuery06();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
 
         // INSERT INTO admin_password_resets (id,email,token,status) VALUES (?,?,?,?);
@@ -158,4 +158,8 @@ public class stepDefinition {
     public void prepared_query07_validate_the_results() {
         assertEquals(1,rowCount);
     }
+// --------------------------------------------------------------------------------------------------
+
+
+
 }

@@ -30,3 +30,7 @@ Feature:
 
   Scenario: Update and verify the 'update_log' value of the data
             in the 'update_logs' table where 'version=?' and 'id=?'.
+    * Prepare and execute an insert query for the 'update_logs' table.
+    * Modify the update log value of the data inserted into the 'update_logs' table.
+    * Confirm the change in the update log value.
+    * Close the database connection.
