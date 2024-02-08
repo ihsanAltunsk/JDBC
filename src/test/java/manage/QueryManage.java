@@ -13,7 +13,8 @@ public class QueryManage {
         private String insertPreparedQuery08 = "INSERT INTO update_logs (id, version, update_log, created_at) VALUES(?, ?, ?, ?)";
         private String updatePreparedQuery08 = "UPDATE update_logs SET update_log = ? WHERE version = ? AND id = ?";
         private String DeletePreparedQuery09 = "DELETE FROM update_logs WHERE id = ?";
-
+        private String insertPreparedQuery10 = "INSERT INTO support_attachments (id, support_message_id, attachment, created_at) VALUES(?, ?, ?, ?)";
+        private String deletePreparedQuery10 = "DELETE FROM support_attachments WHERE support_message_id = ?";
 
     //*********Getter**********
         public String getQuery01() {
@@ -51,5 +52,13 @@ public class QueryManage {
 
     public String getDeletePreparedQuery09() {
         return DeletePreparedQuery09;
+    }
+
+    public String getInsertPreparedQuery10() {
+        return insertPreparedQuery10;
+    }
+
+    public String getDeletePreparedQuery10() {
+        return deletePreparedQuery10;
     }
 }

@@ -41,3 +41,11 @@ Feature:
     * Delete the data inserted into the update_logs table.
     * Confirm the deletion.
     * Close the database connection.
+
+  Scenario: Delete a file in the "support_attachments" table based
+            on the value of "support_message_id=?" and confirm that
+            it has been deleted.
+    * Prepare and execute an insert query for the support_attachments table.
+    * Delete the data inserted into the support_attachments table.
+    * Confirm the deletion.
+    * Close the database connection.

@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 
 public class stepDefinition {
     String query, version, updateLog;
-    int rowCount, id;
+    int rowCount, id, supportMessageID;
     QueryManage queryManage = new QueryManage();
     ResultSet resultSet;
     PreparedStatement preparedStatement;
@@ -213,5 +213,25 @@ public class stepDefinition {
     @Given("Confirm the deletion.")
     public void confirm_the_deletion() {
         assertEquals(1,rowCount);
+    }
+// --------------------------------------------------------------------------------------------------
+    @Given("Prepare and execute an insert query for the support_attachments table.")
+    public void prepare_and_execute_an_insert_query_for_the_support_attachments_table() throws SQLException {
+        query = queryManage.getInsertPreparedQuery10();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        id = faker.number().numberBetween(400,600);
+        supportMessageID = faker.number().numberBetween(250,300);
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.setInt(2, supportMessageID);
+        preparedStatement.setString(3, "658401a61409c1703149990.png");
+        preparedStatement.setDate(4, Date.valueOf(LocalDate.now()));
+
+        rowCount = preparedStatement.executeUpdate();
+        assertEquals(1,rowCount);
+    }
+    @Given("Delete the data inserted into the support_attachments table.")
+    public void delete_the_data_inserted_into_the_support_attachments_table() {
+
     }
 }
