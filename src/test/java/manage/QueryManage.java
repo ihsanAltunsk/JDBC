@@ -41,24 +41,19 @@ public class QueryManage {
         public String getUpdatepreparedQuery07() {
         return updatepreparedQuery07;
     }
-
-    public String getInsertPreparedQuery08() {
+        public String getInsertPreparedQuery08() {
         return insertPreparedQuery08;
     }
-
-    public String getUpdatePreparedQuery08() {
+        public String getUpdatePreparedQuery08() {
         return updatePreparedQuery08;
     }
-
-    public String getDeletePreparedQuery09() {
-        return DeletePreparedQuery09;
-    }
-
-    public String getInsertPreparedQuery10() {
-        return insertPreparedQuery10;
-    }
-
-    public String getDeletePreparedQuery10() {
-        return deletePreparedQuery10;
-    }
+        public String getDeletePreparedQuery09() {
+            return DeletePreparedQuery09;
+        }
+        public String getInsertPreparedQuery10() {
+            return insertPreparedQuery10;
+        }
+        public String getDeletePreparedQuery10() {
+            return deletePreparedQuery10;
+        }
 }
