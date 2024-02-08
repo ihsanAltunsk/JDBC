@@ -35,20 +35,19 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="3e35cd49-5296-4722-ac2b-e2ab5923a14c">
-      <console name="wiseDB" type="STANDARD" schema="" session="Main"><![CDATA[SELECT * FROM support_attachments
+      <console name="wiseDB" type="STANDARD" schema="" session="Main"><![CDATA[SELECT charge FROM deposits WHERE amount < 5000 AND trx = '4GC9SMZUS69S'
+SELECT * FROM admin_password_resets order by id
 UPDATE users SET mobile= 987654321 WHERE username LIKE '%e_'
 UPDATE admin_notifications SET is_read = 1 WHERE is_read = 0 LIMIT 1
 UPDATE update_logs SET update_log = ? WHERE version = ? AND id = ?
-INSERT INTO support_attachments (id, support_message_id, attachment, created_at) VALUES(?, ?, ?, ?);]]></console>
+INSERT INTO admin_password_resets (id, email, token, status, created_at) VALUES(?, ?, ?, ?, ?);]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="3e35cd49-5296-4722-ac2b-e2ab5923a14c" object-ref="consoles/wiseDB" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="3e35cd49-5296-4722-ac2b-e2ab5923a14c" />

@@ -5,15 +5,21 @@ Feature: JDBC Practice
 
   Scenario: Verify the "remember_token" for the data with "email=info@loantechexper.com"
             in the "admins" table in the database.
-
+    * Prepare and execute the query01.
+    * Process the results for query01.
+    * Close the database connection.
 
   Scenario: Verify the "charge" value for the data with "trx=4GC9SMZUS69S" in the
             "Deposits" table where the "amount" is below $500,000.
-
+    * Prepare and execute the query02.
+    * Process the results for query02.
+    * Close the database connection.
 
   Scenario: Add multiple entries simultaneously to the "admin_password_resets" table
             in the database.
-
+    * Prepare and execute the query03.
+    * Process the results for query03.
+    * Close the database connection.
 
   Scenario: Verify the "support_ticket_id" for the data in the "Support_messages"
             table with "?" in the "message" field.

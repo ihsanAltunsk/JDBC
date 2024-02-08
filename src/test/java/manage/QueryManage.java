@@ -15,6 +15,28 @@ public class QueryManage {
         private String DeletePreparedQuery09 = "DELETE FROM update_logs WHERE id = ?";
         private String insertPreparedQuery10 = "INSERT INTO support_attachments (id, support_message_id, attachment, created_at) VALUES(?, ?, ?, ?)";
         private String deletePreparedQuery10 = "DELETE FROM support_attachments WHERE support_message_id = ?";
+        private String practiceQuery01 = "SELECT remember_token FROM admins WHERE email = ?";
+        private String practiceQuery02 = "SELECT charge FROM deposits WHERE amount < ? AND trx = ?";
+        private String practiceQuery03 = "INSERT INTO admin_password_resets (id, email, token, status, created_at) VALUES(?, ?, ?, ?, ?)";
+        private String practiceQuery04 = "";
+        private String practiceQuery05 = "";
+        private String practiceQuery06 = "";
+        private String practiceQuery07 = "";
+        private String practiceQuery08 = "";
+        private String practiceQuery09 = "";
+        private String practiceQuery10 = "";
+        private String practiceQuery11 = "";
+        private String practiceQuery12 = "";
+        private String practiceQuery13 = "";
+        private String practiceQuery14 = "";
+        private String practiceQuery15 = "";
+        private String practiceQuery16 = "";
+        private String practiceQuery17 = "";
+        private String practiceQuery18 = "";
+        private String practiceQuery19 = "";
+        private String practiceQuery20 = "";
+        private String practiceQuery21 = "";
+        private String practiceQuery22 = "";
 
     //*********Getter**********
         public String getQuery01() {
@@ -56,4 +78,16 @@ public class QueryManage {
         public String getDeletePreparedQuery10() {
             return deletePreparedQuery10;
         }
+
+    public String getPracticeQuery01() {
+        return practiceQuery01;
+    }
+
+    public String getPracticeQuery02() {
+        return practiceQuery02;
+    }
+
+    public String getPracticeQuery03() {
+        return practiceQuery03;
+    }
 }
