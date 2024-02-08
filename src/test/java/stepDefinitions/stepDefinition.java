@@ -231,7 +231,11 @@ public class stepDefinition {
         assertEquals(1,rowCount);
     }
     @Given("Delete the data inserted into the support_attachments table.")
-    public void delete_the_data_inserted_into_the_support_attachments_table() {
+    public void delete_the_data_inserted_into_the_support_attachments_table() throws SQLException {
+        query = queryManage.getDeletePreparedQuery10();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,supportMessageID);
 
+        rowCount = preparedStatement.executeUpdate();
     }
 }
