@@ -325,7 +325,28 @@ public class stepDefinition {
         resultSet = preparedStatement.executeQuery();
     }
     @Given("Process the results for query05.")
-    public void process_the_results_for_query05() {
-        
+    public void process_the_results_for_query05() throws SQLException {
+        List<String> actualSubject = new ArrayList<>();
+        while (resultSet.next()) {
+            actualSubject.add(resultSet.getString("subject"));
+        }
+        List<String> expectedSubject = new ArrayList<>();
+        expectedSubject.add("testSubject");
+        expectedSubject.add("Loantech");
+        expectedSubject.add("s");
+        expectedSubject.add("deserunt");
+        expectedSubject.add("asdasd");
+        expectedSubject.add("Test Ticket");
+        expectedSubject.add("Test_attachment");
+        expectedSubject.add("HelloWorld");
+        expectedSubject.add("Blue Test Ticket");
+        expectedSubject.add("AhmetKaya");
+        expectedSubject.add("deneme");
+        expectedSubject.add("Test Ticket1");
+
+        for (int i = 0; i < actualSubject.size(); i++) {
+            assertEquals(expectedSubject.get(i),actualSubject.get(i));
+        }
     }
+// ---------------------------------------------------------------------------------------------------------------------
 }
