@@ -49,9 +49,11 @@ Feature: JDBC Practice
     * Process the results for query08.
     * Close the database connection.
 
-  Scenario: 9- Verify the users with "user id=2" in the "admin_notifications" table whose
+  Scenario: 9- Verify the users with "user_id=1" in the "admin_notifications" table whose
             "id" is greater than 20.
-
+    * Prepare and execute the query09.
+    * Process the results for query09.
+    * Close the database connection.
 
   Scenario: 10- Insert data into the "cron_job_logs" table and confirm that it has been added.
     * Prepare and execute the query10.
@@ -91,12 +93,16 @@ Feature: JDBC Practice
     * Close the database connection.
 
   Scenario: 17- Verify the count of users in the "admin_notifications" table with "is_read=1"
-            and "user_id=1."
-
+            and "user_id=1".
+    * Prepare and execute the query17.
+    * Process the results for query17.
+    * Close the database connection.
 
   Scenario: 18- Update the password reset request for the user with "status=0" in the
             "admin_password_resets" table by entering the "email" information.
-
+    * Prepare and execute the query18.
+    * Process the results for query18.
+    * Close the database connection.
 
   Scenario: 19- List the Deposits with "status=1" in a specific "created_at" range along with
             their total amounts.

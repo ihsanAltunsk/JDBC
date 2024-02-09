@@ -29,7 +29,7 @@ public class QueryManage {
         private String practiceQuery07ID = "SELECT id FROM device_tokens";
         private String practiceQuery07 = "INSERT INTO device_tokens (id, user_id, is_app, token, created_at) VALUES(?, ?, ?, ?, ?)";
         private String practiceQuery08 = "SELECT * FROM admin_notifications WHERE user_id = ? AND is_read = ?";
-        private String practiceQuery09 = "";
+        private String practiceQuery09 = "SELECT * FROM admin_notifications WHERE user_id = ? AND id > ? ";
         private String practiceQuery10ID = "SELECT id FROM cron_job_logs";
         private String practiceQuery10 = "INSERT INTO cron_job_logs (id, cron_job_id, start_at) VALUES(?, ?, ?)";
         private String practiceQuery11 = "SELECT code FROM gateways ORDER BY code DESC LIMIT ? ";
@@ -39,7 +39,7 @@ public class QueryManage {
         private String practiceQuery14 = "INSERT INTO categories (id, name, description) VALUES(?, ?, ?)";
         private String practiceQuery15 = "SELECT * FROM users ORDER BY lastname, firstname DESC";
         private String practiceQuery16 = "SELECT remark, SUM(amount) AS total_amount FROM transactions GROUP BY remark HAVING total_amount > ?";
-        private String practiceQuery17 = "";
+        private String practiceQuery17 = "SELECT COUNT(id) AS total_users FROM admin_notifications WHERE is_read = ? AND user_id = ?";
         private String practiceQuery18 = "";
         private String practiceQuery19 = "";
         private String practiceQuery20 = "";

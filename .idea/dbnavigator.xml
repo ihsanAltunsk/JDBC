@@ -47,9 +47,9 @@ SELECT name FROM u168183796_qaloantec.cron_schedules
 
 INSERT INTO categories (id, name, description) VALUES(?, ?, ?)
 SELECT amount FROM transactions 
-SELECT id FROM transactions
-SELECT remark, SUM(amount) AS total_amount FROM transactions GROUP BY remark HAVING total_amount > 1000
-SELECT * FROM transactions]]></console>
+SELECT * FROM admin_notifications WHERE user_id = 1 AND id > 20 
+SELECT COUNT(id) AS total_users FROM admin_notifications WHERE is_read = 1 AND user_id=1
+UPDATE admin_password_resets SET status = 1]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

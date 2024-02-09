@@ -160,14 +160,34 @@ public class practiceStepDefinitions {
     }
 
 // ---------------------------------------------------------Q09---------------------------------------------------------
+    @Given("Prepare and execute the query09.")
+    public void prepare_and_execute_the_query09() throws SQLException {
+        query = queryManage.getPracticeQuery09();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
 
+        preparedStatement.setInt(1, 1);
+        preparedStatement.setInt(2, 20);
+        resultSet= preparedStatement.executeQuery();
 
+    }
+    @Given("Process the results for query09.")
+    public void process_the_results_for_query09() throws SQLException {
+        List<Integer> actualIDs = new ArrayList<>();
+        while (resultSet.next()){
+            actualIDs.add(resultSet.getInt("id"));
+        }
+        List<Integer> expectedIDs = new ArrayList<>();
+        expectedIDs.add(30);
+        expectedIDs.add(31);
+        expectedIDs.add(53);
+        expectedIDs.add(237);
+        expectedIDs.add(5889);
+        expectedIDs.add(6708);
 
-
-
-
-
-
+        for (int each : actualIDs) {
+            assertTrue(expectedIDs.contains(each));
+        }
+    }
 
 // ---------------------------------------------------------Q10---------------------------------------------------------
     @Given("Prepare and execute the query10.")
@@ -270,5 +290,31 @@ public class practiceStepDefinitions {
 
     }
 
+// ---------------------------------------------------------Q17---------------------------------------------------------
+    @Given("Prepare and execute the query17.")
+    public void prepare_and_execute_the_query17() throws SQLException {
+        query = queryManage.getPracticeQuery17();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1, 1);
+        preparedStatement.setInt(2, 1);
+        resultSet = preparedStatement.executeQuery();
+    }
+    @Given("Process the results for query17.")
+    public void process_the_results_for_query17() throws SQLException {
+        resultSet.next();
+        assertEquals(13,resultSet.getInt("total_users"));
+    }
+
+// ---------------------------------------------------------Q18---------------------------------------------------------
+    @Given("Prepare and execute the query18.")
+    public void prepare_and_execute_the_query18() {
+
+    }
+    @Given("Process the results for query18.")
+    public void process_the_results_for_query18() {
+
+    }
+
+// ---------------------------------------------------------Q19---------------------------------------------------------
 
 }
