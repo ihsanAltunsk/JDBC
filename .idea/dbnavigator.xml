@@ -45,6 +45,7 @@ SELECT * FROM support_tickets
 SELECT subject FROM support_tickets WHERE ticket LIKE '4%'
 SELECT name FROM u168183796_qaloantec.cron_schedules 
 
+SELECT id FROM update_logs
 SELECT * FROM update_logs]]></console>
     </connection>
   </component>
@@ -52,7 +53,9 @@ SELECT * FROM update_logs]]></console>
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="3e35cd49-5296-4722-ac2b-e2ab5923a14c" object-ref="consoles/wiseDB" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="3e35cd49-5296-4722-ac2b-e2ab5923a14c" />

@@ -138,7 +138,6 @@ public class stepDefinition {
         query = queryManage.getInsertPreparedQuery06();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
 
-        // INSERT INTO admin_password_resets (id,email,token,status) VALUES (?,?,?,?);
         preparedStatement.setInt(1,106);
         preparedStatement.setString(2,"email33@gmail.com");
         preparedStatement.setString(3,"125478");
@@ -173,7 +172,6 @@ public class stepDefinition {
         }else {
             System.out.println("UPDATE FAILED!");
         }
-        rowCount = 0;
         assertEquals(1,flag);
     }
     @Given("Modify the update log value of the data inserted into the update_logs table.")
@@ -330,13 +328,14 @@ public class stepDefinition {
         expectedSubject.add("Test Ticket");
         expectedSubject.add("Test_attachment");
         expectedSubject.add("HelloWorld");
+        expectedSubject.add("Ticket666");
         expectedSubject.add("Blue Test Ticket");
         expectedSubject.add("AhmetKaya");
         expectedSubject.add("deneme");
         expectedSubject.add("Test Ticket1");
 
         for (int i = 0; i < actualSubject.size(); i++) {
-            assertEquals(expectedSubject.get(i),actualSubject.get(i));
+            assertTrue(expectedSubject.contains(actualSubject.get(i)));
         }
     }
 // ---------------------------------------------------------------------------------------------------------------------

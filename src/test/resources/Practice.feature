@@ -26,7 +26,7 @@ Feature: JDBC Practice
     * Prepare and execute the query04.
     * Process the results for query04.
     * Close the database connection.
-
+  @AA
   Scenario: 5- Verify the "subject" information for the data in the "support_tickets"
             table where the "ticket" value starts with 4.
     * Prepare and execute the query05.

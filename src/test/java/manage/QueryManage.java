@@ -11,6 +11,7 @@ public class QueryManage {
         private String insertPreparedQuery06 = "INSERT INTO admin_password_resets (id, email, token, status) VALUES (?, ?, ?, ?)";
         private String updatepreparedQuery07 = "UPDATE admin_notifications SET is_read = ? WHERE id = ? ";
         private String insertPreparedQuery08 = "INSERT INTO update_logs (id, version, update_log, created_at) VALUES(?, ?, ?, ?)";
+        private String Query08 = "SELECT id FROM update_logs";
         private String updatePreparedQuery08 = "UPDATE update_logs SET update_log = ? WHERE version = ? AND id = ?";
         private String DeletePreparedQuery09 = "DELETE FROM update_logs WHERE id = ?";
         private String insertPreparedQuery10 = "INSERT INTO support_attachments (id, support_message_id, attachment, created_at) VALUES(?, ?, ?, ?)";
@@ -144,4 +145,8 @@ public class QueryManage {
         public String getPracticeQuery22() {
             return practiceQuery22;
         }
+
+    public String getQuery08() {
+        return Query08;
+    }
 }
