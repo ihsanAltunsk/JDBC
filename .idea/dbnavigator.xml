@@ -44,9 +44,9 @@ SELECT * FROM support_tickets
 SELECT subject FROM support_tickets WHERE ticket LIKE '4%'
 SELECT name FROM u168183796_qaloantec.cron_schedules 
 
-INSERT INTO loans (id, loan_number, user_id, plan_id, amount) VALUES(?, ?, ?, ?, ?);
-SELECT id FROM loans
-SELECT * FROM support_attachments]]></console>
+INSERT INTO device_tokens (id, user_id, is_app, token, created_at) VALUES(?, ?, ?, ?, ?)
+SELECT * FROM admin_notifications WHERE user_id = 1 AND is_read = 0
+SELECT * FROM admin_notifications]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

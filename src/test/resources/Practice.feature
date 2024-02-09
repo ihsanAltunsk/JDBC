@@ -39,13 +39,15 @@ Feature: JDBC Practice
     * Process the results for query06.
     * Close the database connection.
 
-  Scenario: 7- Add the desired data to the "divice_tokens" table in a single query.
+  Scenario: 7- Add the desired data to the "device_tokens" table in a single query.
     * Prepare and execute the query07.
     * Close the database connection.
 
-  Scenario: 8- Verify the count of users with "user id=1" and "is_read=0" in the
+  Scenario: 8- Verify the count of users with "user_id=1" and "is_read=0" in the
             "admin_notifications" table.
-
+    * Prepare and execute the query08.
+    * Process the results for query08.
+    * Close the database connection.
 
   Scenario: 9- Verify the users with "user id=2" in the "admin_notifications" table whose
             "id" is greater than 20.

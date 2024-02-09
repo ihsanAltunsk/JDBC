@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 public class InsertIntoMethods {
     static String query, version, updateLog, email, token, loan_number;
-    static int id, rowCount, status, supportMessageID, user_id, plan_id, amount;
+    static int id, rowCount, status, supportMessageID, user_id, plan_id, amount, is_app;
     static Date date;
     static PreparedStatement preparedStatement;
     static Faker faker= new Faker();
@@ -56,7 +56,7 @@ public class InsertIntoMethods {
         rowCount = preparedStatement.executeUpdate();
         assertEquals(1,rowCount);
 
-        System.out.println("NEW DATA: " + id + " " + version + " " + updateLog + " " + date);
+        System.out.println("NEW DATA: |" + id + "| |" + version + "| |" + updateLog + "| |" + date + "|");
 
         return id;
     }
@@ -79,7 +79,7 @@ public class InsertIntoMethods {
         rowCount = preparedStatement.executeUpdate();
         assertEquals(1,rowCount);
 
-        System.out.println("NEW DATA: " + id + " " + email + " " + token + " " + status + " " + date);
+        System.out.println("NEW DATA: |" + id + "| |" + email + "| |" + token + "| |" + status + "| |" + date + "|");
 
         return rowCount;
     }
@@ -98,7 +98,7 @@ public class InsertIntoMethods {
         rowCount = preparedStatement.executeUpdate();
         assertEquals(1, rowCount);
 
-        System.out.println("NEW DATA: " + id + " " + supportMessageID + " 658401a61409c1703149990 " + date);
+        System.out.println("NEW DATA: |" + id + "| |" + supportMessageID + "| |658401a61409c1703149990.png| |" + date + "|");
 
         return supportMessageID;
     }
@@ -121,9 +121,30 @@ public class InsertIntoMethods {
         rowCount = preparedStatement.executeUpdate();
         assertEquals(1, rowCount);
 
-        System.out.println("NEW DATA: " + id + " " + loan_number + " " + user_id + " " + plan_id + " " + amount);
+        System.out.println("NEW DATA: |" + id + "| |" + loan_number + "| |" + user_id + "| |" + plan_id + "| |" + amount + "|");
 
         return loan_number;
+    }
+
+    public static void device_tokens() throws SQLException {
+        query = queryManage.getPracticeQuery07();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
+        id = idGenerator(queryManage.getPracticeQuery07ID());
+        user_id = random.nextInt(10);
+        is_app = random.nextInt(10);
+        token = faker.lorem().characters(6);
+        date = Date.valueOf(LocalDate.now());
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.setInt(2, user_id);
+        preparedStatement.setInt(3, is_app);
+        preparedStatement.setString(4, token);
+        preparedStatement.setDate(5, date);
+        rowCount = preparedStatement.executeUpdate();
+        assertEquals(1, rowCount);
+
+        System.out.println("NEW DATA: |" + id + "| |" + user_id + "| |" + is_app + "| |" + token + "| |" + date + "|");
     }
 
 }

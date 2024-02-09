@@ -6,11 +6,9 @@ import utilities.JDBCReusableMethods;
 import manage.QueryManage;
 import utilities.InsertIntoMethods;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -309,8 +307,28 @@ public class stepDefinition {
     }
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute the query07.")
-    public void prepare_and_execute_the_query07() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void prepare_and_execute_the_query07() throws SQLException {
+        InsertIntoMethods.device_tokens();
     }
+// ---------------------------------------------------------------------------------------------------------------------
+    @Given("Prepare and execute the query08.")
+    public void prepare_and_execute_the_query08() throws SQLException {
+        query = queryManage.getPracticeQuery08();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1, 1);
+        preparedStatement.setInt(2, 0);
+
+        resultSet = preparedStatement.executeQuery();
+    }
+    @Given("Process the results for query08.")
+    public void process_the_results_for_query08() throws SQLException {
+        int count = 0;
+        while (resultSet.next()){
+            count++;
+        }
+
+        assertEquals(2, count);
+    }
+// ---------------------------------------------------------------------------------------------------------------------
+
 }

@@ -26,8 +26,9 @@ public class QueryManage {
         private String practiceQuery06ID = "SELECT id FROM loans";
         private String practiceQuery06 = "INSERT INTO loans (id, loan_number, user_id, plan_id, amount) VALUES(?, ?, ?, ?, ?)";
         private String practiceQuery06Delete = "DELETE FROM loans WHERE loan_number = ?";
-        private String practiceQuery07 = "";
-        private String practiceQuery08 = "";
+        private String practiceQuery07ID = "SELECT id FROM device_tokens";
+        private String practiceQuery07 = "INSERT INTO device_tokens (id, user_id, is_app, token, created_at) VALUES(?, ?, ?, ?, ?)";
+        private String practiceQuery08 = "SELECT * FROM admin_notifications WHERE user_id = ? AND is_read = ?";
         private String practiceQuery09 = "";
         private String practiceQuery10 = "";
         private String practiceQuery11 = "";
@@ -168,5 +169,9 @@ public class QueryManage {
 
     public String getPracticeQuery06Delete() {
         return practiceQuery06Delete;
+    }
+
+    public String getPracticeQuery07ID() {
+        return practiceQuery07ID;
     }
 }
