@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 public class InsertIntoMethods {
     static String query, version, updateLog, email, token, loan_number;
-    static int id, rowCount, status, supportMessageID, user_id, plan_id, amount, is_app;
+    static int id, rowCount, status, supportMessageID, user_id, plan_id, amount, is_app, cron_job_id;
     static Date date;
     static PreparedStatement preparedStatement;
     static Faker faker= new Faker();
@@ -126,7 +126,7 @@ public class InsertIntoMethods {
         return loan_number;
     }
 
-    public static void device_tokens() throws SQLException {
+    public static void device_tokensInsert() throws SQLException {
         query = queryManage.getPracticeQuery07();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
 
@@ -145,6 +145,23 @@ public class InsertIntoMethods {
         assertEquals(1, rowCount);
 
         System.out.println("NEW DATA: |" + id + "| |" + user_id + "| |" + is_app + "| |" + token + "| |" + date + "|");
+    }
+
+    public static void cron_job_logsInsert() throws SQLException {
+        query = queryManage.getPracticeQuery10();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
+        id = idGenerator(queryManage.getPracticeQuery10ID());
+        cron_job_id = random.nextInt(10);
+        date = Date.valueOf(LocalDate.now());
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.setInt(2, cron_job_id);
+        preparedStatement.setDate(3, date);
+        rowCount = preparedStatement.executeUpdate();
+        assertEquals(1, rowCount);
+
+        System.out.println("NEW DATA: |" + id + "| |" + cron_job_id + "| |" + date + "|");
     }
 
 }

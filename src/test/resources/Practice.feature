@@ -54,13 +54,18 @@ Feature: JDBC Practice
 
 
   Scenario: 10- Insert data into the "cron_job_logs" table and confirm that it has been added.
+    * Prepare and execute the query10.
+    * Close the database connection.
 
-
-  Scenario: 11- List the top 5 "code" values in the "Gateways" table.
-
+  Scenario: 11- List the top 5 "code" values in the "gateways" table.
+    * Prepare and execute the query11.
+    * Process the results for query11.
+    * Close the database connection.
 
   Scenario: 12- List data in the "Subscribers" table where the "email" does not contain "a."
-
+    * Prepare and execute the query12.
+    * Process the results for query12.
+    * Close the database connection.
 
   Scenario: 13- Separate "user_id" and "user_ip" in the "user_logins" table according
             to the city.

@@ -308,7 +308,7 @@ public class stepDefinition {
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute the query07.")
     public void prepare_and_execute_the_query07() throws SQLException {
-        InsertIntoMethods.device_tokens();
+        InsertIntoMethods.device_tokensInsert();
     }
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute the query08.")
@@ -330,5 +330,31 @@ public class stepDefinition {
         assertEquals(2, count);
     }
 // ---------------------------------------------------------------------------------------------------------------------
+    @Given("Prepare and execute the query10.")
+    public void prepare_and_execute_the_query10() throws SQLException {
+        InsertIntoMethods.cron_job_logsInsert();
+    }
+// ---------------------------------------------------------------------------------------------------------------------
+    @Given("Prepare and execute the query11.")
+    public void prepare_and_execute_the_query11() throws SQLException {
+        query = queryManage.getPracticeQuery11();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,5);
+        resultSet = preparedStatement.executeQuery();
+    }
+    @Given("Process the results for query11.")
+    public void process_the_results_for_query11() throws SQLException {
+        while (resultSet.next()){
+            System.out.println(resultSet.getInt("code"));
+        }
+    }
+// ---------------------------------------------------------------------------------------------------------------------
+    @Given("Prepare and execute the query12.")
+    public void prepare_and_execute_the_query12() {
 
+    }
+    @Given("Process the results for query12.")
+    public void process_the_results_for_query12() {
+
+    }
 }
