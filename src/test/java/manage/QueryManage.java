@@ -78,24 +78,70 @@ public class QueryManage {
         public String getDeletePreparedQuery10() {
             return deletePreparedQuery10;
         }
-
-    public String getPracticeQuery01() {
-        return practiceQuery01;
-    }
-
-    public String getPracticeQuery02() {
-        return practiceQuery02;
-    }
-
-    public String getPracticeQuery03() {
-        return practiceQuery03;
-    }
-
-    public String getPracticeQuery04() {
-        return practiceQuery04;
-    }
-
-    public String getPracticeQuery05() {
-        return practiceQuery05;
-    }
+        public String getPracticeQuery01() {
+            return practiceQuery01;
+        }
+        public String getPracticeQuery02() {
+            return practiceQuery02;
+        }
+        public String getPracticeQuery03() {
+            return practiceQuery03;
+        }
+        public String getPracticeQuery04() {
+            return practiceQuery04;
+        }
+        public String getPracticeQuery05() {
+            return practiceQuery05;
+        }
+        public String getPracticeQuery06() {
+            return practiceQuery06;
+        }
+        public String getPracticeQuery07() {
+            return practiceQuery07;
+        }
+        public String getPracticeQuery08() {
+            return practiceQuery08;
+        }
+        public String getPracticeQuery09() {
+            return practiceQuery09;
+        }
+        public String getPracticeQuery10() {
+            return practiceQuery10;
+        }
+        public String getPracticeQuery11() {
+            return practiceQuery11;
+        }
+        public String getPracticeQuery12() {
+            return practiceQuery12;
+        }
+        public String getPracticeQuery13() {
+            return practiceQuery13;
+        }
+        public String getPracticeQuery14() {
+            return practiceQuery14;
+        }
+        public String getPracticeQuery15() {
+            return practiceQuery15;
+        }
+        public String getPracticeQuery16() {
+            return practiceQuery16;
+        }
+        public String getPracticeQuery17() {
+            return practiceQuery17;
+        }
+        public String getPracticeQuery18() {
+            return practiceQuery18;
+        }
+        public String getPracticeQuery19() {
+            return practiceQuery19;
+        }
+        public String getPracticeQuery20() {
+            return practiceQuery20;
+        }
+        public String getPracticeQuery21() {
+            return practiceQuery21;
+        }
+        public String getPracticeQuery22() {
+            return practiceQuery22;
+        }
 }
