@@ -40,7 +40,8 @@ Feature: JDBC Practice
     * Close the database connection.
 
   Scenario: 7- Add the desired data to the "divice_tokens" table in a single query.
-
+    * Prepare and execute the query07.
+    * Close the database connection.
 
   Scenario: 8- Verify the count of users with "user id=1" and "is_read=0" in the
             "admin_notifications" table.

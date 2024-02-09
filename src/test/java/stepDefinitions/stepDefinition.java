@@ -308,5 +308,9 @@ public class stepDefinition {
         assertEquals(1,rowCount);
     }
 // ---------------------------------------------------------------------------------------------------------------------
-
+    @Given("Prepare and execute the query07.")
+    public void prepare_and_execute_the_query07() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
 }

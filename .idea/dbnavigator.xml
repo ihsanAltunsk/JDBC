@@ -46,7 +46,7 @@ SELECT name FROM u168183796_qaloantec.cron_schedules
 
 INSERT INTO loans (id, loan_number, user_id, plan_id, amount) VALUES(?, ?, ?, ?, ?);
 SELECT id FROM loans
-SELECT * FROM loans]]></console>
+SELECT * FROM support_attachments]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
