@@ -8,13 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Random;
 
+import static org.junit.Assert.assertEquals;
+
 public class InsertIntoMethods {
-    static String query, version, updateLog, email, token;
-    static int id, rowCount, status;
+    static String query, version, updateLog, email, token, loan_number;
+    static int id, rowCount, status, supportMessageID, user_id, plan_id, amount;
     static Date date;
     static PreparedStatement preparedStatement;
     static Faker faker= new Faker();
@@ -45,29 +47,82 @@ public class InsertIntoMethods {
         id = idGenerator(queryManage.getQuery08());
         version = faker.options().option("Windows 10", "MacOs Ventura", "Linux");
         updateLog = faker.lorem().sentence(1);
-        date = java.sql.Date.valueOf(LocalDate.now());
+        date = Date.valueOf(LocalDate.now());
 
         preparedStatement.setInt(1, id);
         preparedStatement.setString(2, version);
         preparedStatement.setString(3, updateLog);
-        preparedStatement.setDate(4, (java.sql.Date) date);
+        preparedStatement.setDate(4, date);
         rowCount = preparedStatement.executeUpdate();
+        assertEquals(1,rowCount);
 
         System.out.println("NEW DATA: " + id + " " + version + " " + updateLog + " " + date);
 
-        return rowCount;
+        return id;
     }
 
     public static int admin_password_resetsInsert() throws SQLException {
         query = queryManage.getInsertPreparedQuery06();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
 
-        preparedStatement.setInt(1,106);
-        preparedStatement.setString(2,"email33@gmail.com");
-        preparedStatement.setString(3,"125478");
-        preparedStatement.setInt(4,1);
+        id = idGenerator(queryManage.getQuery06());
+        email = faker.internet().emailAddress();
+        token = faker.lorem().characters(6);
+        status = random.nextInt(0,2);
+        date = Date.valueOf(LocalDate.now());
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, email);
+        preparedStatement.setString(3, token);
+        preparedStatement.setInt(4, status);
+        preparedStatement.setDate(5, date);
         rowCount = preparedStatement.executeUpdate();
+        assertEquals(1,rowCount);
+
+        System.out.println("NEW DATA: " + id + " " + email + " " + token + " " + status + " " + date);
 
         return rowCount;
+    }
+    public static int support_attachmentsInsert() throws SQLException {
+        query = queryManage.getInsertPreparedQuery10();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
+        id = idGenerator(queryManage.getQuery10());
+        supportMessageID = idGenerator(queryManage.getQuery10());
+        date = Date.valueOf(LocalDate.now());
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.setInt(2, supportMessageID);
+        preparedStatement.setString(3, "658401a61409c1703149990.png");
+        preparedStatement.setDate(4, date);
+        rowCount = preparedStatement.executeUpdate();
+        assertEquals(1, rowCount);
+
+        System.out.println("NEW DATA: " + id + " " + supportMessageID + " 658401a61409c1703149990 " + date);
+
+        return supportMessageID;
+    }
+
+    public static String loansInsert() throws SQLException {
+        query = queryManage.getPracticeQuery06();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
+        id = idGenerator(queryManage.getPracticeQuery06ID());
+        loan_number = faker.regexify("[A-Z]{12}");
+        user_id = random.nextInt(100);
+        plan_id = random.nextInt(100);
+        amount = random.nextInt(1000,10000);
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, loan_number);
+        preparedStatement.setInt(3, user_id);
+        preparedStatement.setInt(4, plan_id);
+        preparedStatement.setInt(5, amount);
+        rowCount = preparedStatement.executeUpdate();
+        assertEquals(1, rowCount);
+
+        System.out.println("NEW DATA: " + id + " " + loan_number + " " + user_id + " " + plan_id + " " + amount);
+
+        return loan_number;
     }
 }

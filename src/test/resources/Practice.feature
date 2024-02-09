@@ -2,13 +2,13 @@ Feature: JDBC Practice
 
   Background:
     * Establish a database connection.
-  @Query02
+
   Scenario: 1- Verify the "remember_token" for the data with "email=info@loantechexper.com"
             in the "admins" table in the database.
     * Prepare and execute the query01.
     * Process the results for query01.
     * Close the database connection.
-  @Query03
+
   Scenario: 2- Verify the "charge" value for the data with trx="4GC9SMZUS69S" in the
             "Deposits" table where the "amount" is below $5000.
     * Prepare and execute the query02.
@@ -26,7 +26,7 @@ Feature: JDBC Practice
     * Prepare and execute the query04.
     * Process the results for query04.
     * Close the database connection.
-  @AA
+
   Scenario: 5- Verify the "subject" information for the data in the "support_tickets"
             table where the "ticket" value starts with 4.
     * Prepare and execute the query05.

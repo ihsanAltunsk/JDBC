@@ -39,14 +39,14 @@
 UPDATE users SET mobile= 987654321 WHERE username LIKE '%e_'
 UPDATE admin_notifications SET is_read = 1 WHERE is_read = 0 LIMIT 1
 UPDATE update_logs SET update_log = ? WHERE version = ? AND id = ?
-INSERT INTO admin_password_resets (id, email, token, status, created_at) VALUES(?, ?, ?, ?, ?);
 SELECT remember_token FROM admins WHERE email='info@loantechexper.com'
 SELECT * FROM support_tickets
 SELECT subject FROM support_tickets WHERE ticket LIKE '4%'
 SELECT name FROM u168183796_qaloantec.cron_schedules 
 
-SELECT id FROM update_logs
-SELECT * FROM update_logs]]></console>
+INSERT INTO loans (id, loan_number, user_id, plan_id, amount) VALUES(?, ?, ?, ?, ?);
+SELECT id FROM loans
+SELECT * FROM loans]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

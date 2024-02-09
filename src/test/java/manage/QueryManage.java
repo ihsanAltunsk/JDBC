@@ -8,20 +8,24 @@ public class QueryManage {
         private String query04 = "SELECT user_id, GROUP_CONCAT(browser, ' - ', os) AS browser_os FROM user_logins GROUP BY user_id";
         private String UpdateQuery05 = "UPDATE users SET mobile= 987654321 WHERE username LIKE '%e_'";
         private String updatePreparedQuery05 = "UPDATE users SET mobile= ? WHERE username LIKE ?";
-        private String insertPreparedQuery06 = "INSERT INTO admin_password_resets (id, email, token, status) VALUES (?, ?, ?, ?)";
+        private String insertPreparedQuery06 = "INSERT INTO admin_password_resets (id, email, token, status, created_at) VALUES (?, ?, ?, ?, ?)";
+        private String Query06 = "SELECT id FROM admin_password_resets";
         private String updatepreparedQuery07 = "UPDATE admin_notifications SET is_read = ? WHERE id = ? ";
         private String insertPreparedQuery08 = "INSERT INTO update_logs (id, version, update_log, created_at) VALUES(?, ?, ?, ?)";
         private String Query08 = "SELECT id FROM update_logs";
         private String updatePreparedQuery08 = "UPDATE update_logs SET update_log = ? WHERE version = ? AND id = ?";
         private String DeletePreparedQuery09 = "DELETE FROM update_logs WHERE id = ?";
         private String insertPreparedQuery10 = "INSERT INTO support_attachments (id, support_message_id, attachment, created_at) VALUES(?, ?, ?, ?)";
+        private String Query10 = "SELECT id FROM support_attachments";
         private String deletePreparedQuery10 = "DELETE FROM support_attachments WHERE support_message_id = ?";
         private String practiceQuery01 = "SELECT remember_token FROM admins WHERE email = ?";
         private String practiceQuery02 = "SELECT charge FROM deposits WHERE amount < ? AND trx = ?";
         private String practiceQuery03 = "INSERT INTO admin_password_resets (id, email, token, status, created_at) VALUES(?, ?, ?, ?, ?)";
         private String practiceQuery04 = "SELECT support_ticket_id FROM support_messages WHERE message = ?";
         private String practiceQuery05 = "SELECT subject FROM support_tickets WHERE ticket LIKE ?";
-        private String practiceQuery06 = "";
+        private String practiceQuery06ID = "SELECT id FROM loans";
+        private String practiceQuery06 = "INSERT INTO loans (id, loan_number, user_id, plan_id, amount) VALUES(?, ?, ?, ?, ?)";
+        private String practiceQuery06Delete = "DELETE FROM loans WHERE loan_number = ?";
         private String practiceQuery07 = "";
         private String practiceQuery08 = "";
         private String practiceQuery09 = "";
@@ -148,5 +152,21 @@ public class QueryManage {
 
     public String getQuery08() {
         return Query08;
+    }
+
+    public String getQuery06() {
+        return Query06;
+    }
+
+    public String getQuery10() {
+        return Query10;
+    }
+
+    public String getPracticeQuery06ID() {
+        return practiceQuery06ID;
+    }
+
+    public String getPracticeQuery06Delete() {
+        return practiceQuery06Delete;
     }
 }

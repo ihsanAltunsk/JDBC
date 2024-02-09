@@ -18,7 +18,7 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 public class stepDefinition {
-    String query, version, updateLog, expectedStr, actualStr;
+    String query, version, expectedStr, actualStr, loan_number, updateLog;
     int rowCount, id, supportMessageID,expectedInt, actualInt;
     QueryManage queryManage = new QueryManage();
     ResultSet resultSet;
@@ -135,14 +135,7 @@ public class stepDefinition {
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("preparedQuery06 Prepare and execute the query.")
     public void prepared_query06_prepare_and_execute_the_query() throws SQLException {
-        query = queryManage.getInsertPreparedQuery06();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-
-        preparedStatement.setInt(1,106);
-        preparedStatement.setString(2,"email33@gmail.com");
-        preparedStatement.setString(3,"125478");
-        preparedStatement.setInt(4,1);
-        rowCount = preparedStatement.executeUpdate();
+        rowCount = InsertIntoMethods.admin_password_resetsInsert();
     }
     @Given("preparedQuery06 Validate the results.")
     public void prepared_query06_validate_the_results() {
@@ -164,15 +157,7 @@ public class stepDefinition {
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute an insert query for the update_logs table.")
     public void prepare_and_execute_an_insert_query_for_the_table() throws SQLException {
-
-        rowCount = InsertIntoMethods.update_logsInsert();
-        int flag = 0;
-        if (rowCount > 0 ){
-            flag++;
-        }else {
-            System.out.println("UPDATE FAILED!");
-        }
-        assertEquals(1,flag);
+        id = InsertIntoMethods.update_logsInsert();
     }
     @Given("Modify the update log value of the data inserted into the update_logs table.")
     public void modify_the_update_log_value_of_the_data_inserted_into_the_table() throws SQLException {
@@ -205,18 +190,7 @@ public class stepDefinition {
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute an insert query for the support_attachments table.")
     public void prepare_and_execute_an_insert_query_for_the_support_attachments_table() throws SQLException {
-        query = queryManage.getInsertPreparedQuery10();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        id = faker.number().numberBetween(400,600);
-        supportMessageID = faker.number().numberBetween(250,300);
-
-        preparedStatement.setInt(1, id);
-        preparedStatement.setInt(2, supportMessageID);
-        preparedStatement.setString(3, "658401a61409c1703149990.png");
-        preparedStatement.setDate(4, Date.valueOf(LocalDate.now()));
-
-        rowCount = preparedStatement.executeUpdate();
-        assertEquals(1,rowCount);
+        supportMessageID = InsertIntoMethods.support_attachmentsInsert();
     }
     @Given("Delete the data inserted into the support_attachments table.")
     public void delete_the_data_inserted_into_the_support_attachments_table() throws SQLException {
@@ -262,26 +236,7 @@ public class stepDefinition {
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute the query03.")
     public void prepare_and_execute_the_query03() throws SQLException {
-        query = queryManage.getPracticeQuery03();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-
-        int id, status;
-        String email,token;
-        Date date;
-        id = faker.number().numberBetween(60,70);
-        email = faker.internet().emailAddress();
-        token = faker.lorem().characters(6);
-        status = random.nextInt(0,2);
-        date = Date.valueOf(LocalDate.now());
-
-        preparedStatement.setInt(1, id);
-        preparedStatement.setString(2, email);
-        preparedStatement.setString(3, token);
-        preparedStatement.setInt(4, status);
-        preparedStatement.setDate(5, date);
-
-        rowCount = preparedStatement.executeUpdate();
-        System.out.println(id + " " + email + " " + token + " " + status + " " + date);
+        rowCount = InsertIntoMethods.admin_password_resetsInsert();
     }
     @Given("Process the results for query03.")
     public void process_the_results_for_query03() {
@@ -334,18 +289,24 @@ public class stepDefinition {
         expectedSubject.add("deneme");
         expectedSubject.add("Test Ticket1");
 
-        for (int i = 0; i < actualSubject.size(); i++) {
-            assertTrue(expectedSubject.contains(actualSubject.get(i)));
+        for (String each : actualSubject) {
+            assertTrue(expectedSubject.contains(each));
         }
     }
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute the query06.")
     public void prepare_and_execute_the_query06() throws SQLException {
-        query = queryManage.getPracticeQuery06();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        loan_number = InsertIntoMethods.loansInsert();
     }
     @Given("Process the results for query06.")
-    public void process_the_results_for_query06() {
+    public void process_the_results_for_query06() throws SQLException {
+        query = queryManage.getPracticeQuery06Delete();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setString(1, loan_number);
+        rowCount = preparedStatement.executeUpdate();
 
+        assertEquals(1,rowCount);
     }
+// ---------------------------------------------------------------------------------------------------------------------
+
 }
