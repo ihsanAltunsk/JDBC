@@ -62,26 +62,33 @@ Feature: JDBC Practice
     * Process the results for query11.
     * Close the database connection.
 
-  Scenario: 12- List data in the "Subscribers" table where the "email" does not contain "a."
+  Scenario: 12- List data in the "subscribers" table where the "email" does not contain "a".
     * Prepare and execute the query12.
     * Process the results for query12.
     * Close the database connection.
 
-  Scenario: 13- Separate "user_id" and "user_ip" in the "user_logins" table according
+  Scenario: 13- Group "user_id" and "user_ip" in the "user_logins" table according
             to the city.
+    * Prepare and execute the query13.
+    * Process the results for query13.
+    * Close the database connection.
 
-
-  Scenario: 14- Add data containing only "id, name, description" to the "Catagories" table.
+  Scenario: 14- Add data containing only "id, name, description" to the "categories" table.
             Confirm the addition.
+    * Prepare and execute the query14.
+    * Close the database connection.
 
-
-  Scenario: 15- List all records in the "Users" table sorted by "lastname" in ascending order
+  Scenario: 15- List all records in the "users" table sorted by "lastname" in ascending order
             and "firstname" in descending order. Verify the first last name in the list.
+    * Prepare and execute the query15.
+    * Process the results for query15.
+    * Close the database connection.
 
-
-  Scenario: 16- Calculate the total "amount" values in the "Transactions" table based on the
+  Scenario: 16- Calculate the total "amount" values in the "transactions" table based on the
             "remark" type and verify those exceeding $1000.
-
+    * Prepare and execute the query16.
+    * Process the results for query16.
+    * Close the database connection.
 
   Scenario: 17- Verify the count of users in the "admin_notifications" table with "is_read=1"
             and "user_id=1."

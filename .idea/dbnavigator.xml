@@ -44,10 +44,12 @@ SELECT * FROM support_tickets
 SELECT subject FROM support_tickets WHERE ticket LIKE '4%'
 SELECT name FROM u168183796_qaloantec.cron_schedules 
 
-INSERT INTO cron_job_logs (id, cron_job_id, start_at) VALUES(?, ?, ?)
-SELECT * FROM admin_notifications WHERE user_id = 1 AND id > 20
-SELECT code FROM gateways ORDER BY code DESC LIMIT 5 
-SELECT * FROM gateways]]></console>
+
+INSERT INTO categories (id, name, description) VALUES(?, ?, ?)
+SELECT amount FROM transactions 
+SELECT id FROM transactions
+SELECT remark, SUM(amount) AS total_amount FROM transactions GROUP BY remark HAVING total_amount > 1000
+SELECT * FROM transactions]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

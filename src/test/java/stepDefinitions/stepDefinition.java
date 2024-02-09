@@ -1,28 +1,22 @@
 package stepDefinitions;
 
-import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
 import utilities.JDBCReusableMethods;
 import manage.QueryManage;
 import utilities.InsertIntoMethods;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 import static org.junit.Assert.*;
 
 public class stepDefinition {
-    String query, version, expectedStr, actualStr, loan_number, updateLog;
+    String query, version, expectedStr, actualStr, loan_number, lastname;
     int rowCount, id, supportMessageID,expectedInt, actualInt;
     QueryManage queryManage = new QueryManage();
     ResultSet resultSet;
     PreparedStatement preparedStatement;
-    Faker faker= new Faker();
-    Random random = new Random();
 
     @Given("Establish a database connection.")
     public void establish_a_database_connection() {
@@ -197,164 +191,5 @@ public class stepDefinition {
         preparedStatement.setInt(1,supportMessageID);
 
         rowCount = preparedStatement.executeUpdate();
-    }
-// ---------------------------------------------------------------------------------------------------------------------
-    @Given("Prepare and execute the query01.")
-    public void prepare_and_execute_the_query01() throws SQLException {
-        query = queryManage.getPracticeQuery01();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        preparedStatement.setString(1,"info@loantechexper.com");
-
-        resultSet = preparedStatement.executeQuery();
-    }
-    @Given("Process the results for query01.")
-    public void process_the_results_for_query01() throws SQLException {
-        resultSet.next();
-        expectedStr = "1xUgfVUD1Ggx5CVz7mxLvcye8RXRbeFqSktSIkhya321TqDkLOsqhys4pnJv";
-        actualStr = resultSet.getString("remember_token");
-        assertEquals(expectedStr,actualStr);
-    }
-// ---------------------------------------------------------------------------------------------------------------------
-    @Given("Prepare and execute the query02.")
-    public void prepare_and_execute_the_query02() throws SQLException {
-        query = queryManage.getPracticeQuery02();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-
-        preparedStatement.setInt(1,5000);
-        preparedStatement.setString(2,"4GC9SMZUS69S");
-        resultSet = preparedStatement.executeQuery();
-    }
-    @Given("Process the results for query02.")
-    public void process_the_results_for_query02() throws SQLException {
-        resultSet.next();
-        expectedInt = 102;
-        actualInt = resultSet.getInt("charge");
-        assertEquals(expectedInt,actualInt);
-    }
-// ---------------------------------------------------------------------------------------------------------------------
-    @Given("Prepare and execute the query03.")
-    public void prepare_and_execute_the_query03() throws SQLException {
-        rowCount = InsertIntoMethods.admin_password_resetsInsert();
-    }
-    @Given("Process the results for query03.")
-    public void process_the_results_for_query03() {
-        assertEquals(1, rowCount);
-    }
-// ---------------------------------------------------------------------------------------------------------------------
-    @Given("Prepare and execute the query04.")
-    public void prepare_and_execute_the_query04() throws SQLException {
-        query = queryManage.getPracticeQuery04();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        preparedStatement.setString(1,"automation");
-
-        resultSet = preparedStatement.executeQuery();
-    }
-    @Given("Process the results for query04.")
-    public void process_the_results_for_query04() throws SQLException {
-        resultSet.next();
-        expectedInt = 18;
-        actualInt = resultSet.getInt("support_ticket_id");
-        assertEquals(expectedInt,actualInt);
-    }
-// ---------------------------------------------------------------------------------------------------------------------
-    @Given("Prepare and execute the query05.")
-    public void prepare_and_execute_the_query05() throws SQLException {
-        query = queryManage.getPracticeQuery05();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        preparedStatement.setString(1,"4%");
-
-        resultSet = preparedStatement.executeQuery();
-    }
-    @Given("Process the results for query05.")
-    public void process_the_results_for_query05() throws SQLException {
-        List<String> actualSubject = new ArrayList<>();
-        while (resultSet.next()) {
-            actualSubject.add(resultSet.getString("subject"));
-        }
-
-        List<String> expectedSubject = new ArrayList<>();
-        expectedSubject.add("testSubject");
-        expectedSubject.add("Loantech");
-        expectedSubject.add("s");
-        expectedSubject.add("deserunt");
-        expectedSubject.add("asdasd");
-        expectedSubject.add("Test Ticket");
-        expectedSubject.add("Test_attachment");
-        expectedSubject.add("HelloWorld");
-        expectedSubject.add("Ticket666");
-        expectedSubject.add("Blue Test Ticket");
-        expectedSubject.add("AhmetKaya");
-        expectedSubject.add("deneme");
-        expectedSubject.add("Test Ticket1");
-
-        for (String each : actualSubject) {
-            assertTrue(expectedSubject.contains(each));
-        }
-    }
-// ---------------------------------------------------------------------------------------------------------------------
-    @Given("Prepare and execute the query06.")
-    public void prepare_and_execute_the_query06() throws SQLException {
-        loan_number = InsertIntoMethods.loansInsert();
-    }
-    @Given("Process the results for query06.")
-    public void process_the_results_for_query06() throws SQLException {
-        query = queryManage.getPracticeQuery06Delete();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        preparedStatement.setString(1, loan_number);
-        rowCount = preparedStatement.executeUpdate();
-
-        assertEquals(1,rowCount);
-    }
-// ---------------------------------------------------------------------------------------------------------------------
-    @Given("Prepare and execute the query07.")
-    public void prepare_and_execute_the_query07() throws SQLException {
-        InsertIntoMethods.device_tokensInsert();
-    }
-// ---------------------------------------------------------------------------------------------------------------------
-    @Given("Prepare and execute the query08.")
-    public void prepare_and_execute_the_query08() throws SQLException {
-        query = queryManage.getPracticeQuery08();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        preparedStatement.setInt(1, 1);
-        preparedStatement.setInt(2, 0);
-
-        resultSet = preparedStatement.executeQuery();
-    }
-    @Given("Process the results for query08.")
-    public void process_the_results_for_query08() throws SQLException {
-        int count = 0;
-        while (resultSet.next()){
-            count++;
-        }
-
-        assertEquals(2, count);
-    }
-// ---------------------------------------------------------------------------------------------------------------------
-    @Given("Prepare and execute the query10.")
-    public void prepare_and_execute_the_query10() throws SQLException {
-        InsertIntoMethods.cron_job_logsInsert();
-    }
-// ---------------------------------------------------------------------------------------------------------------------
-    @Given("Prepare and execute the query11.")
-    public void prepare_and_execute_the_query11() throws SQLException {
-        query = queryManage.getPracticeQuery11();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        preparedStatement.setInt(1,5);
-        resultSet = preparedStatement.executeQuery();
-    }
-    @Given("Process the results for query11.")
-    public void process_the_results_for_query11() throws SQLException {
-        while (resultSet.next()){
-            System.out.println(resultSet.getInt("code"));
-        }
-    }
-// ---------------------------------------------------------------------------------------------------------------------
-    @Given("Prepare and execute the query12.")
-    public void prepare_and_execute_the_query12() {
-
-    }
-    @Given("Process the results for query12.")
-    public void process_the_results_for_query12() {
-
     }
 }

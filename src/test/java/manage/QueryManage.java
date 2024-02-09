@@ -33,11 +33,12 @@ public class QueryManage {
         private String practiceQuery10ID = "SELECT id FROM cron_job_logs";
         private String practiceQuery10 = "INSERT INTO cron_job_logs (id, cron_job_id, start_at) VALUES(?, ?, ?)";
         private String practiceQuery11 = "SELECT code FROM gateways ORDER BY code DESC LIMIT ? ";
-        private String practiceQuery12 = "";
-        private String practiceQuery13 = "";
-        private String practiceQuery14 = "";
-        private String practiceQuery15 = "";
-        private String practiceQuery16 = "";
+        private String practiceQuery12 = "SELECT * FROM subscribers WHERE email NOT LIKE ?";
+        private String practiceQuery13 = "SELECT city, GROUP_CONCAT(DISTINCT user_id) AS user_ids, GROUP_CONCAT(DISTINCT user_ip) AS user_ips FROM user_logins GROUP BY city";
+        private String practiceQuery14ID = "SELECT id FROM categories";
+        private String practiceQuery14 = "INSERT INTO categories (id, name, description) VALUES(?, ?, ?)";
+        private String practiceQuery15 = "SELECT * FROM users ORDER BY lastname, firstname DESC";
+        private String practiceQuery16 = "SELECT remark, SUM(amount) AS total_amount FROM transactions GROUP BY remark HAVING total_amount > ?";
         private String practiceQuery17 = "";
         private String practiceQuery18 = "";
         private String practiceQuery19 = "";
@@ -178,5 +179,9 @@ public class QueryManage {
 
     public String getPracticeQuery10ID() {
         return practiceQuery10ID;
+    }
+
+    public String getPracticeQuery14ID() {
+        return practiceQuery14ID;
     }
 }

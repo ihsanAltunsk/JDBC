@@ -15,7 +15,7 @@ import java.util.Random;
 import static org.junit.Assert.assertEquals;
 
 public class InsertIntoMethods {
-    static String query, version, updateLog, email, token, loan_number;
+    static String query, version, updateLog, email, token, loan_number, name, description;
     static int id, rowCount, status, supportMessageID, user_id, plan_id, amount, is_app, cron_job_id;
     static Date date;
     static PreparedStatement preparedStatement;
@@ -36,7 +36,6 @@ public class InsertIntoMethods {
         while(ids.contains(id)){
             id = random.nextInt(1000);
         }
-
         return id;
     }
 
@@ -164,4 +163,20 @@ public class InsertIntoMethods {
         System.out.println("NEW DATA: |" + id + "| |" + cron_job_id + "| |" + date + "|");
     }
 
+    public static void categoriesInsert() throws SQLException {
+        query = queryManage.getPracticeQuery14();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
+        id = idGenerator(queryManage.getPracticeQuery14ID());
+        name = faker.name().fullName();
+        description = faker.lorem().sentence(1);
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, name);
+        preparedStatement.setString(3, description);
+        rowCount = preparedStatement.executeUpdate();
+        assertEquals(1, rowCount);
+
+        System.out.println("NEW DATA: |" + id + "| |" + name + "| |" + description + "|");
+    }
 }
