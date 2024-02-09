@@ -2,15 +2,15 @@ Feature: JDBC Practice
 
   Background:
     * Establish a database connection.
-
+  @Query02
   Scenario: Verify the "remember_token" for the data with "email=info@loantechexper.com"
             in the "admins" table in the database.
     * Prepare and execute the query01.
     * Process the results for query01.
     * Close the database connection.
-
-  Scenario: Verify the "charge" value for the data with "trx=4GC9SMZUS69S" in the
-            "Deposits" table where the "amount" is below $500,000.
+  @Query03
+  Scenario: Verify the "charge" value for the data with trx="4GC9SMZUS69S" in the
+            "Deposits" table where the "amount" is below $5000.
     * Prepare and execute the query02.
     * Process the results for query02.
     * Close the database connection.
@@ -23,11 +23,15 @@ Feature: JDBC Practice
 
   Scenario: Verify the "support_ticket_id" for the data in the "Support_messages"
             table with "?" in the "message" field.
-
+    * Prepare and execute the query04.
+    * Process the results for query04.
+    * Close the database connection.
 
   Scenario: Verify the "subject" information for the data in the "support_tickets"
             table where the "ticket" value starts with 4.
-
+    * Prepare and execute the query05.
+    * Process the results for query05.
+    * Close the database connection.
 
   Scenario: Delete the requested data using "loan_number" in the "loans" table in the
             database and confirm the deletion.

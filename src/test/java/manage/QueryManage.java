@@ -18,8 +18,8 @@ public class QueryManage {
         private String practiceQuery01 = "SELECT remember_token FROM admins WHERE email = ?";
         private String practiceQuery02 = "SELECT charge FROM deposits WHERE amount < ? AND trx = ?";
         private String practiceQuery03 = "INSERT INTO admin_password_resets (id, email, token, status, created_at) VALUES(?, ?, ?, ?, ?)";
-        private String practiceQuery04 = "";
-        private String practiceQuery05 = "";
+        private String practiceQuery04 = "SELECT support_ticket_id FROM support_messages WHERE message = ?";
+        private String practiceQuery05 = "SELECT subject FROM support_tickets WHERE ticket LIKE ?";
         private String practiceQuery06 = "";
         private String practiceQuery07 = "";
         private String practiceQuery08 = "";
@@ -89,5 +89,13 @@ public class QueryManage {
 
     public String getPracticeQuery03() {
         return practiceQuery03;
+    }
+
+    public String getPracticeQuery04() {
+        return practiceQuery04;
+    }
+
+    public String getPracticeQuery05() {
+        return practiceQuery05;
     }
 }

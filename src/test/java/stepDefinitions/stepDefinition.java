@@ -17,8 +17,8 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 public class stepDefinition {
-    String query, version, updateLog, expected, actual;
-    int rowCount, id, supportMessageID,expectedN, actualN;
+    String query, version, updateLog, expectedStr, actualStr;
+    int rowCount, id, supportMessageID,expectedInt, actualInt;
     QueryManage queryManage = new QueryManage();
     ResultSet resultSet;
     PreparedStatement preparedStatement;
@@ -244,22 +244,22 @@ public class stepDefinition {
         query = queryManage.getPracticeQuery01();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
         preparedStatement.setString(1,"info@loantechexper.com");
+
         resultSet = preparedStatement.executeQuery();
     }
     @Given("Process the results for query01.")
     public void process_the_results_for_query01() throws SQLException {
         resultSet.next();
-        expected = "1xUgfVUD1Ggx5CVz7mxLvcye8RXRbeFqSktSIkhya321TqDkLOsqhys4pnJv";
-        actual = resultSet.getString("remember_token");
-        System.out.println("actual: " + actual);
-        System.out.println("expected: " + expected);
-        assertEquals(expected,actual);
+        expectedStr = "1xUgfVUD1Ggx5CVz7mxLvcye8RXRbeFqSktSIkhya321TqDkLOsqhys4pnJv";
+        actualStr = resultSet.getString("remember_token");
+        assertEquals(expectedStr,actualStr);
     }
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute the query02.")
     public void prepare_and_execute_the_query02() throws SQLException {
         query = queryManage.getPracticeQuery02();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
         preparedStatement.setInt(1,5000);
         preparedStatement.setString(2,"4GC9SMZUS69S");
         resultSet = preparedStatement.executeQuery();
@@ -267,40 +267,65 @@ public class stepDefinition {
     @Given("Process the results for query02.")
     public void process_the_results_for_query02() throws SQLException {
         resultSet.next();
-        expectedN =102;
-        actualN = resultSet.getInt("charge");
-        System.out.println("actual: " + actual);
-        System.out.println("expected: " + expected);
-        assertEquals(expected,actual);
+        expectedInt = 102;
+        actualInt = resultSet.getInt("charge");
+        assertEquals(expectedInt,actualInt);
     }
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute the query03.")
     public void prepare_and_execute_the_query03() throws SQLException {
         query = queryManage.getPracticeQuery03();
-        int a,d;
-        String b;
-        String c;
-        Date e;
-        a = faker.number().numberBetween(0,100);
-        b = faker.internet().emailAddress();
-        c = faker.lorem().characters(6);
-        d = random.nextInt(0,2);
-        e = Date.valueOf(LocalDate.now());
-
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        preparedStatement.setInt(1, a);
-        preparedStatement.setString(2, b);
-        preparedStatement.setString(3, c);
-        preparedStatement.setInt(4, d);
-        preparedStatement.setDate(5, e);
 
-        System.out.println(a + "  " + b + "  " + c + "  " + d + "  " + e);
+        int id, status;
+        String email,token;
+        Date date;
+        id = faker.number().numberBetween(60,70);
+        email = faker.internet().emailAddress();
+        token = faker.lorem().characters(6);
+        status = random.nextInt(0,2);
+        date = Date.valueOf(LocalDate.now());
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, email);
+        preparedStatement.setString(3, token);
+        preparedStatement.setInt(4, status);
+        preparedStatement.setDate(5, date);
+
         rowCount = preparedStatement.executeUpdate();
+        System.out.println(id + " " + email + " " + token + " " + status + " " + date);
     }
     @Given("Process the results for query03.")
     public void process_the_results_for_query03() {
-        assertEquals(1,rowCount);
+        assertEquals(1, rowCount);
     }
 // ---------------------------------------------------------------------------------------------------------------------
+    @Given("Prepare and execute the query04.")
+    public void prepare_and_execute_the_query04() throws SQLException {
+        query = queryManage.getPracticeQuery04();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setString(1,"automation");
 
+        resultSet = preparedStatement.executeQuery();
+    }
+    @Given("Process the results for query04.")
+    public void process_the_results_for_query04() throws SQLException {
+        resultSet.next();
+        expectedInt = 18;
+        actualInt = resultSet.getInt("support_ticket_id");
+        assertEquals(expectedInt,actualInt);
+    }
+// ---------------------------------------------------------------------------------------------------------------------
+    @Given("Prepare and execute the query05.")
+    public void prepare_and_execute_the_query05() throws SQLException {
+        query = queryManage.getPracticeQuery05();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setString(1,"4%");
+
+        resultSet = preparedStatement.executeQuery();
+    }
+    @Given("Process the results for query05.")
+    public void process_the_results_for_query05() {
+        
+    }
 }
