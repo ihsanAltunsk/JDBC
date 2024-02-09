@@ -36,7 +36,6 @@ Feature: JDBC Practice
   Scenario: 6- Delete the requested data using "loan_number" in the "loans" table in the
             database and confirm the deletion.
 
-
   Scenario: 7- Add the desired data to the "divice_tokens" table in a single query.
 
 

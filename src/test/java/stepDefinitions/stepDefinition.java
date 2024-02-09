@@ -330,6 +330,7 @@ public class stepDefinition {
         while (resultSet.next()) {
             actualSubject.add(resultSet.getString("subject"));
         }
+
         List<String> expectedSubject = new ArrayList<>();
         expectedSubject.add("testSubject");
         expectedSubject.add("Loantech");
@@ -349,4 +350,5 @@ public class stepDefinition {
         }
     }
 // ---------------------------------------------------------------------------------------------------------------------
+
 }
