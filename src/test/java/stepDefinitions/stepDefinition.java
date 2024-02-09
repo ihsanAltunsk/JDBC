@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
 import utilities.JDBCReusableMethods;
 import manage.QueryManage;
+import utilities.InsertIntoMethods;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -164,19 +165,8 @@ public class stepDefinition {
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute an insert query for the update_logs table.")
     public void prepare_and_execute_an_insert_query_for_the_table() throws SQLException {
-        query = queryManage.getInsertPreparedQuery08();
-        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        id = faker.number().numberBetween(450,550);
-        version = faker.options().option("Windows 10", "MacOs Ventura", "Linux");
-        updateLog = faker.lorem().sentence(1);
 
-        preparedStatement.setInt(1, id);
-        preparedStatement.setString(2, version);
-        preparedStatement.setString(3, updateLog);
-        preparedStatement.setDate(4, Date.valueOf(LocalDate.now()));
-
-        rowCount = preparedStatement.executeUpdate();
-
+        rowCount = InsertIntoMethods.update_logsInsert();
         int flag = 0;
         if (rowCount > 0 ){
             flag++;
@@ -350,5 +340,13 @@ public class stepDefinition {
         }
     }
 // ---------------------------------------------------------------------------------------------------------------------
+    @Given("Prepare and execute the query06.")
+    public void prepare_and_execute_the_query06() throws SQLException {
+        query = queryManage.getPracticeQuery06();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+    }
+    @Given("Process the results for query06.")
+    public void process_the_results_for_query06() {
 
+    }
 }
