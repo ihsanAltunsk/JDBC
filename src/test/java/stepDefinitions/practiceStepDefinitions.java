@@ -113,8 +113,8 @@ public class practiceStepDefinitions {
         expectedSubject.add("deneme");
         expectedSubject.add("Test Ticket1");
 
-        for (int i = 0; i < actualSubject.size() ; i++) {
-            assertTrue(expectedSubject.contains(actualSubject.get(i)));
+        for (String each : actualSubject) {
+            assertTrue(expectedSubject.contains(each));
         }
     }
 
@@ -131,7 +131,7 @@ public class practiceStepDefinitions {
         preparedStatement.setString(1, loan_number);
         rowCount = preparedStatement.executeUpdate();
 
-        assertEquals(1,rowCount);
+        assertEquals(1, rowCount);
     }
 
 // ---------------------------------------------------------QO7---------------------------------------------------------
@@ -203,7 +203,7 @@ public class practiceStepDefinitions {
         query = queryManage.getPracticeQuery11();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
 
-        preparedStatement.setInt(1,5);
+        preparedStatement.setInt(1, 5);
         resultSet = preparedStatement.executeQuery();
     }
     @Given("Process the results for query11.")
@@ -219,7 +219,7 @@ public class practiceStepDefinitions {
         query = queryManage.getPracticeQuery12();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
 
-        preparedStatement.setString(1,"%a%");
+        preparedStatement.setString(1, "%a%");
         resultSet = preparedStatement.executeQuery();
     }
     @Given("Process the results for query12.")
@@ -365,7 +365,9 @@ public class practiceStepDefinitions {
     @Given("Process the results for query20.")
     public void process_the_results_for_query20() throws SQLException {
         resultSet.next();
-        System.out.println("Total amount of USD deposits: " + resultSet.getInt("total_amount") + "$");
+        int total = resultSet.getInt("total_amount");
+        assertEquals(7000, total);
+        System.out.println("Total amount of USD deposits: " + total + "$");
     }
 
 // ---------------------------------------------------------Q21---------------------------------------------------------
