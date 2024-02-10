@@ -51,7 +51,7 @@ SELECT SUM(total_delay_charge) AS total_amount FROM gateway_currencies WHERE loa
 SELECT COUNT(id) AS total_users FROM admin_notifications WHERE is_read = 1 AND user_id = 1
 UPDATE admin_password_resets SET status = 1 WHERE email = 'carey.bailey@hotmail.com'
 
-SELECT subject FROM support_tickets WHERE ticket LIKE '4%']]></console>
+SELECT * FROM support_messages]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

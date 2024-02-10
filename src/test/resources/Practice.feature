@@ -110,7 +110,7 @@ Feature: JDBC Practice
     * Process the results for query19.
     * Close the database connection.
 
-  Scenario: 20- Calculate the total amount of deposits with "currency=USD" using the
+  Scenario: 20- Calculate the total amount of "max_amount" with "currency=USD" using the
             "gateway_currencies" table.
     * Prepare and execute the query20.
     * Process the results for query20.
