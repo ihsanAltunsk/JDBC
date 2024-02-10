@@ -5,7 +5,6 @@ import utilities.JDBCReusableMethods;
 import manage.QueryManage;
 import utilities.InsertIntoMethods;
 
-import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -281,13 +280,23 @@ public class practiceStepDefinitions {
     }
     @Given("Process the results for query16.")
     public void process_the_results_for_query16() throws SQLException {
-        List<BigDecimal> actualTotalAmount = new ArrayList<>();
+        List<Double> actualTotalAmount = new ArrayList<>();
         while (resultSet.next()){
-            actualTotalAmount.add(resultSet.getBigDecimal("total_amount"));
+            actualTotalAmount.add(resultSet.getDouble("total_amount"));
         }
 
-        List<BigDecimal> expectedTotalAmount = new ArrayList<>();
+        List<Double> expectedTotalAmount = new ArrayList<>();
+        expectedTotalAmount.add(107373.52);
+        expectedTotalAmount.add(314785.0);
+        expectedTotalAmount.add(33011.0);
+        expectedTotalAmount.add(700145.12);
+        expectedTotalAmount.add(405540.2);
+        expectedTotalAmount.add(298444.4);
+        expectedTotalAmount.add(185254.0);
 
+        for (Double each : actualTotalAmount) {
+            assertTrue(expectedTotalAmount.contains(each));
+        }
     }
 
 // ---------------------------------------------------------Q17---------------------------------------------------------
