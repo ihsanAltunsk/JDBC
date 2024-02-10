@@ -1,7 +1,6 @@
 package manage;
 
 public class QueryManage {
-
         private String query01 = "SELECT user_id FROM u168183796_qaloantec.deposits WHERE amount BETWEEN ? AND ?";
         private String query02 = "SELECT name FROM u168183796_qaloantec.cron_schedules LIMIT 2";
         private String query03 = "SELECT firstname,lastname FROM users WHERE country_code NOT LIKE 'TR' AND id=11";
@@ -46,7 +45,7 @@ public class QueryManage {
         private String practiceQuery21 = "";
         private String practiceQuery22 = "SELECT name FROM loan_plans WHERE (delay_value = ? AND fixed_charge = ?) OR percent_charge = ? LIMIT ?";
 
-    //*********Getter**********
+        //*******************Getter*******************
         public String getQuery01() {
             return query01;
         }
@@ -91,9 +90,6 @@ public class QueryManage {
         }
         public String getPracticeQuery02() {
             return practiceQuery02;
-        }
-        public String getPracticeQuery03() {
-            return practiceQuery03;
         }
         public String getPracticeQuery04() {
             return practiceQuery04;
@@ -152,36 +148,28 @@ public class QueryManage {
         public String getPracticeQuery22() {
             return practiceQuery22;
         }
-
-    public String getQuery08() {
-        return Query08;
-    }
-
-    public String getQuery06() {
-        return Query06;
-    }
-
-    public String getQuery10() {
-        return Query10;
-    }
-
-    public String getPracticeQuery06ID() {
-        return practiceQuery06ID;
-    }
-
-    public String getPracticeQuery06Delete() {
-        return practiceQuery06Delete;
-    }
-
-    public String getPracticeQuery07ID() {
-        return practiceQuery07ID;
-    }
-
-    public String getPracticeQuery10ID() {
-        return practiceQuery10ID;
-    }
-
-    public String getPracticeQuery14ID() {
-        return practiceQuery14ID;
-    }
+        public String getQuery08() {
+            return Query08;
+        }
+        public String getQuery06() {
+            return Query06;
+        }
+        public String getQuery10() {
+            return Query10;
+        }
+        public String getPracticeQuery06ID() {
+            return practiceQuery06ID;
+        }
+        public String getPracticeQuery06Delete() {
+            return practiceQuery06Delete;
+        }
+        public String getPracticeQuery07ID() {
+            return practiceQuery07ID;
+        }
+        public String getPracticeQuery10ID() {
+            return practiceQuery10ID;
+        }
+        public String getPracticeQuery14ID() {
+            return practiceQuery14ID;
+        }
 }

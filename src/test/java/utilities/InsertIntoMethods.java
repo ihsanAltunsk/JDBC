@@ -81,6 +81,7 @@ public class InsertIntoMethods {
 
         return rowCount;
     }
+
     public static int support_attachmentsInsert() throws SQLException {
         query = queryManage.getInsertPreparedQuery10();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);

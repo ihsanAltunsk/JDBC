@@ -12,8 +12,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class stepDefinition {
-    String query, version, expectedStr, actualStr, loan_number, lastname;
-    int rowCount, id, supportMessageID,expectedInt, actualInt;
+    String query, version;
+    int rowCount, id, supportMessageID;
     QueryManage queryManage = new QueryManage();
     ResultSet resultSet;
     PreparedStatement preparedStatement;
@@ -47,6 +47,7 @@ public class stepDefinition {
     public void close_the_database_connection() throws SQLException {
         JDBCReusableMethods.closeConnection();
     }
+
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Query02 Prepare and execute the query.")
     public void query02_prepare_and_execute_the_query() throws SQLException {
@@ -69,6 +70,7 @@ public class stepDefinition {
             assertEquals(expectedNames.get(i), names.get(i));
         }
     }
+
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Query03 Prepare and execute the query.")
     public void query03_prepare_and_execute_the_query() throws SQLException {
@@ -83,6 +85,7 @@ public class stepDefinition {
                 " " + resultSet.getString("lastname");
         assertEquals(expectedName, actualName);
     }
+
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Query04 Prepare and execute the query.")
     public void query04_prepare_and_execute_the_query() throws SQLException {
@@ -99,6 +102,7 @@ public class stepDefinition {
             System.out.println("Browser & OS: " + browserOS);
         }
     }
+
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("UpdateQuery05 Prepare and execute the query.")
     public void update_query05_prepare_and_execute_the_query() throws SQLException {
@@ -110,6 +114,7 @@ public class stepDefinition {
     public void update_query05_validate_the_results() {
         assertEquals(18,rowCount);
     }
+
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("preparedQuery05 Prepare and execute the query.")
     public void prepared_query05_prepare_and_execute_the_query() throws SQLException {
@@ -124,6 +129,7 @@ public class stepDefinition {
     public void prepared_query05_validate_the_results() {
         assertEquals(18, rowCount);
     }
+
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("preparedQuery06 Prepare and execute the query.")
     public void prepared_query06_prepare_and_execute_the_query() throws SQLException {
@@ -133,6 +139,7 @@ public class stepDefinition {
     public void prepared_query06_validate_the_results() {
         assertEquals(1, rowCount);
     }
+
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("preparedQuery07 Prepare and execute the query.")
     public void prepared_query07_prepare_and_execute_the_query() throws SQLException {
@@ -146,6 +153,7 @@ public class stepDefinition {
     public void prepared_query07_validate_the_results() {
         assertEquals(1, rowCount);
     }
+
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute an insert query for the update_logs table.")
     public void prepare_and_execute_an_insert_query_for_the_table() throws SQLException {
@@ -166,6 +174,7 @@ public class stepDefinition {
     public void confirm_the_change_in_the_update_log_value() {
         assertEquals(1,rowCount);
     }
+
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Delete the data inserted into the update_logs table.")
     public void delete_the_data_inserted_into_the_update_logs_table() throws SQLException {
@@ -179,6 +188,7 @@ public class stepDefinition {
     public void confirm_the_deletion() {
         assertEquals(1,rowCount);
     }
+
 // ---------------------------------------------------------------------------------------------------------------------
     @Given("Prepare and execute an insert query for the support_attachments table.")
     public void prepare_and_execute_an_insert_query_for_the_support_attachments_table() throws SQLException {

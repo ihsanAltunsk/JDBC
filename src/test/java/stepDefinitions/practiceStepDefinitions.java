@@ -4,7 +4,6 @@ import io.cucumber.java.en.Given;
 import utilities.JDBCReusableMethods;
 import manage.QueryManage;
 import utilities.InsertIntoMethods;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
