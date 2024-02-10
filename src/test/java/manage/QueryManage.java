@@ -44,7 +44,7 @@ public class QueryManage {
         private String practiceQuery19 = "SELECT created_at, SUM(amount) AS total_amount FROM deposits WHERE status = ? AND created_at BETWEEN ? AND ?";
         private String practiceQuery20 = "SELECT SUM(max_amount) AS total_amount FROM gateway_currencies WHERE currency = ?";
         private String practiceQuery21 = "";
-        private String practiceQuery22 = "";
+        private String practiceQuery22 = "SELECT name FROM loan_plans WHERE (delay_value = ? AND fixed_charge = ?) OR percent_charge = ? LIMIT ?";
 
     //*********Getter**********
         public String getQuery01() {

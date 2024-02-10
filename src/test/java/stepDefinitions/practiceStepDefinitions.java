@@ -24,13 +24,14 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query01() throws SQLException {
         query = queryManage.getPracticeQuery01();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        preparedStatement.setString(1,"info@loantechexper.com");
 
+        preparedStatement.setString(1,"info@loantechexper.com");
         resultSet = preparedStatement.executeQuery();
     }
     @Given("Process the results for query01.")
     public void process_the_results_for_query01() throws SQLException {
         resultSet.next();
+
         expectedStr = "1xUgfVUD1Ggx5CVz7mxLvcye8RXRbeFqSktSIkhya321TqDkLOsqhys4pnJv";
         actualStr = resultSet.getString("remember_token");
         assertEquals(expectedStr,actualStr);
@@ -49,6 +50,7 @@ public class practiceStepDefinitions {
     @Given("Process the results for query02.")
     public void process_the_results_for_query02() throws SQLException {
         resultSet.next();
+
         expectedInt = 102;
         actualInt = resultSet.getInt("charge");
         assertEquals(expectedInt,actualInt);
@@ -69,13 +71,14 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query04() throws SQLException {
         query = queryManage.getPracticeQuery04();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        preparedStatement.setString(1,"automation");
 
+        preparedStatement.setString(1,"automation");
         resultSet = preparedStatement.executeQuery();
     }
     @Given("Process the results for query04.")
     public void process_the_results_for_query04() throws SQLException {
         resultSet.next();
+
         expectedInt = 18;
         actualInt = resultSet.getInt("support_ticket_id");
         assertEquals(expectedInt,actualInt);
@@ -86,8 +89,8 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query05() throws SQLException {
         query = queryManage.getPracticeQuery05();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-        preparedStatement.setString(1,"4%");
 
+        preparedStatement.setString(1,"4%");
         resultSet = preparedStatement.executeQuery();
     }
     @Given("Process the results for query05.")
@@ -126,6 +129,7 @@ public class practiceStepDefinitions {
     public void process_the_results_for_query06() throws SQLException {
         query = queryManage.getPracticeQuery06Delete();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
         preparedStatement.setString(1, loan_number);
         rowCount = preparedStatement.executeUpdate();
 
@@ -143,6 +147,7 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query08() throws SQLException {
         query = queryManage.getPracticeQuery08();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
         preparedStatement.setInt(1, 1);
         preparedStatement.setInt(2, 0);
 
@@ -199,6 +204,7 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query11() throws SQLException {
         query = queryManage.getPracticeQuery11();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
         preparedStatement.setInt(1,5);
         resultSet = preparedStatement.executeQuery();
     }
@@ -214,6 +220,7 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query12() throws SQLException {
         query = queryManage.getPracticeQuery12();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
         preparedStatement.setString(1,"%a%");
         resultSet = preparedStatement.executeQuery();
     }
@@ -267,7 +274,7 @@ public class practiceStepDefinitions {
             }
         }
         assertEquals("ABSHIREBATZ", lastname);
-        System.out.println("lastname: " + lastname);
+        System.out.println("first lastname: " + lastname);
     }
 
 // ---------------------------------------------------------Q16---------------------------------------------------------
@@ -275,6 +282,7 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query16() throws SQLException {
         query = queryManage.getPracticeQuery16();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
         preparedStatement.setInt(1, 1000);
         resultSet = preparedStatement.executeQuery();
     }
@@ -304,6 +312,7 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query17() throws SQLException {
         query = queryManage.getPracticeQuery17();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
         preparedStatement.setInt(1, 1);
         preparedStatement.setInt(2, 1);
         resultSet = preparedStatement.executeQuery();
@@ -319,6 +328,7 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query18() throws SQLException {
         query = queryManage.getPracticeQuery18();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
         preparedStatement.setInt(1,1);
         preparedStatement.setString(2,"carey.bailey@hotmail.com");
         rowCount = preparedStatement.executeUpdate();
@@ -333,6 +343,7 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query19() throws SQLException {
         query = queryManage.getPracticeQuery19();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
         preparedStatement.setInt(1,1);
         preparedStatement.setString(2,"2023-12-21");
         preparedStatement.setString(3,"2023-12-30");
@@ -349,6 +360,7 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query20() throws SQLException {
         query = queryManage.getPracticeQuery20();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
         preparedStatement.setString(1,"USD");
         resultSet = preparedStatement.executeQuery();
     }
@@ -360,21 +372,38 @@ public class practiceStepDefinitions {
 
 // ---------------------------------------------------------Q21---------------------------------------------------------
     @Given("Prepare and execute the query21.")
-    public void prepare_and_execute_the_query21() {
+    public void prepare_and_execute_the_query21() throws SQLException {
 
     }
     @Given("Process the results for query21.")
-    public void process_the_results_for_query21() {
+    public void process_the_results_for_query21() throws SQLException {
 
     }
 
 // ---------------------------------------------------------Q22---------------------------------------------------------
     @Given("Prepare and execute the query22.")
-    public void prepare_and_execute_the_query22() {
+    public void prepare_and_execute_the_query22() throws SQLException {
+        query = queryManage.getPracticeQuery22();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
 
+        preparedStatement.setInt(1,1);
+        preparedStatement.setInt(2,5);
+        preparedStatement.setInt(3,3);
+        preparedStatement.setInt(4,3);
+        resultSet = preparedStatement.executeQuery();
     }
     @Given("Process the results for query22.")
-    public void process_the_results_for_query22() {
+    public void process_the_results_for_query22() throws SQLException {
+        List<String> actualNames = new ArrayList<>();
+        while (resultSet.next()){
+            actualNames.add(resultSet.getString("name"));
+        }
 
+        List<String> expectedNames = new ArrayList<>();
+        expectedNames.add("Bugra Test Loan 123");
+        expectedNames.add("KrediYasemin3Kredi3Kredi3Kredi3");
+        expectedNames.add("KrediYasemin5");
+
+        assertEquals(expectedNames,actualNames);
     }
 }
