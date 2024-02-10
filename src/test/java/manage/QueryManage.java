@@ -40,8 +40,8 @@ public class QueryManage {
         private String practiceQuery15 = "SELECT * FROM users ORDER BY lastname, firstname DESC";
         private String practiceQuery16 = "SELECT remark, SUM(amount) AS total_amount FROM transactions GROUP BY remark HAVING total_amount > ?";
         private String practiceQuery17 = "SELECT COUNT(id) AS total_users FROM admin_notifications WHERE is_read = ? AND user_id = ?";
-        private String practiceQuery18 = "";
-        private String practiceQuery19 = "";
+        private String practiceQuery18 = "UPDATE admin_password_resets SET status = ? WHERE email = ?";
+        private String practiceQuery19 = "SELECT created_at, SUM(amount) AS total_amount FROM deposits WHERE status = ? AND created_at BETWEEN ? AND ?";
         private String practiceQuery20 = "";
         private String practiceQuery21 = "";
         private String practiceQuery22 = "";

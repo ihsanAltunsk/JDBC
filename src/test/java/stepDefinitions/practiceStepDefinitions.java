@@ -307,14 +307,25 @@ public class practiceStepDefinitions {
 
 // ---------------------------------------------------------Q18---------------------------------------------------------
     @Given("Prepare and execute the query18.")
-    public void prepare_and_execute_the_query18() {
-
+    public void prepare_and_execute_the_query18() throws SQLException {
+        query = queryManage.getPracticeQuery18();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,1);
+        preparedStatement.setString(2,"carey.bailey@hotmail.com");
+        rowCount = preparedStatement.executeUpdate();
     }
     @Given("Process the results for query18.")
     public void process_the_results_for_query18() {
-
+        assertEquals(1,rowCount);
     }
 
 // ---------------------------------------------------------Q19---------------------------------------------------------
+    @Given("Prepare and execute the query19.")
+    public void prepare_and_execute_the_query19() {
 
+    }
+    @Given("Process the results for query19.")
+    public void process_the_results_for_query19() {
+
+    }
 }

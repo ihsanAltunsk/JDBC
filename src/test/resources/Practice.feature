@@ -104,9 +104,11 @@ Feature: JDBC Practice
     * Process the results for query18.
     * Close the database connection.
 
-  Scenario: 19- List the Deposits with "status=1" in a specific "created_at" range along with
+  Scenario: 19- List the deposits with "status=1" in a specific "created_at" range along with
             their total amounts.
-
+    * Prepare and execute the query19.
+    * Process the results for query19.
+    * Close the database connection.
 
   Scenario: 20- Calculate the total amount of Deposits with "currency=USD" using the
             "gateway_currencies" table.

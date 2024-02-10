@@ -32,10 +32,9 @@ public class InsertIntoMethods {
             ids.add(resultSet.getInt("id"));
         }
 
-        id = random.nextInt(1000);
-        while(ids.contains(id)){
+        do {
             id = random.nextInt(1000);
-        }
+        } while (ids.contains(id));
         return id;
     }
 
