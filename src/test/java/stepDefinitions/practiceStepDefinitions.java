@@ -343,4 +343,14 @@ public class practiceStepDefinitions {
         resultSet.next();
         System.out.println("Total amount between 2023-12-21 and 2023-12-30: " + resultSet.getInt("total_amount"));
     }
+
+// ---------------------------------------------------------Q20---------------------------------------------------------
+    @Given("Prepare and execute the query20.")
+    public void prepare_and_execute_the_query20() {
+
+    }
+    @Given("Process the results for query20.")
+    public void process_the_results_for_query20() {
+
+    }
 }

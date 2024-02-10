@@ -110,9 +110,11 @@ Feature: JDBC Practice
     * Process the results for query19.
     * Close the database connection.
 
-  Scenario: 20- Calculate the total amount of Deposits with "currency=USD" using the
+  Scenario: 20- Calculate the total amount of deposits with "currency=USD" using the
             "gateway_currencies" table.
-
+    * Prepare and execute the query20.
+    * Process the results for query20.
+    * Close the database connection.
 
   Scenario: 21- Calculate and group the "total_delay_charge" amount for loans with
             "loan_id=1" based on the "loan_id."
