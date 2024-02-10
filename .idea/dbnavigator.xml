@@ -46,8 +46,8 @@ SELECT name FROM u168183796_qaloantec.cron_schedules
 
 
 INSERT INTO categories (id, name, description) VALUES(?, ?, ?)
-SELECT * FROM gateway_currencies WHERE currency = 'USD'
-SELECT remark, SUM(amount) AS total_amount FROM transactions GROUP BY remark HAVING total_amount > 1000
+SELECT * FROM installments
+SELECT SUM(total_delay_charge) AS total_amount FROM gateway_currencies WHERE loan_id = 1 GROUP BY loan_id
 SELECT COUNT(id) AS total_users FROM admin_notifications WHERE is_read = 1 AND user_id = 1
 UPDATE admin_password_resets SET status = 1 WHERE email = 'carey.bailey@hotmail.com']]></console>
     </connection>

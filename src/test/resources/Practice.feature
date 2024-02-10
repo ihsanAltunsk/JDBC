@@ -118,8 +118,12 @@ Feature: JDBC Practice
 
   Scenario: 21- Calculate and group the "total_delay_charge" amount for loans with
             "loan_id=1" based on the "loan_id."
-
+    * Prepare and execute the query21.
+    * Process the results for query21.
+    * Close the database connection.
 
   Scenario: 22- Verify the "name" information for the first three entries in the "loan_plans"
             table based on "delay_value" and "fixed_charge" or "percent_charge."
-
+    * Prepare and execute the query22.
+    * Process the results for query22.
+    * Close the database connection.

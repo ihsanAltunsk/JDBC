@@ -42,7 +42,7 @@ public class QueryManage {
         private String practiceQuery17 = "SELECT COUNT(id) AS total_users FROM admin_notifications WHERE is_read = ? AND user_id = ?";
         private String practiceQuery18 = "UPDATE admin_password_resets SET status = ? WHERE email = ?";
         private String practiceQuery19 = "SELECT created_at, SUM(amount) AS total_amount FROM deposits WHERE status = ? AND created_at BETWEEN ? AND ?";
-        private String practiceQuery20 = "";
+        private String practiceQuery20 = "SELECT SUM(max_amount) AS total_amount FROM gateway_currencies WHERE currency = ?";
         private String practiceQuery21 = "";
         private String practiceQuery22 = "";
 

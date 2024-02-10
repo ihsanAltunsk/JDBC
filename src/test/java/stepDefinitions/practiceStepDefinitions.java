@@ -346,11 +346,35 @@ public class practiceStepDefinitions {
 
 // ---------------------------------------------------------Q20---------------------------------------------------------
     @Given("Prepare and execute the query20.")
-    public void prepare_and_execute_the_query20() {
-
+    public void prepare_and_execute_the_query20() throws SQLException {
+        query = queryManage.getPracticeQuery20();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setString(1,"USD");
+        resultSet = preparedStatement.executeQuery();
     }
     @Given("Process the results for query20.")
-    public void process_the_results_for_query20() {
+    public void process_the_results_for_query20() throws SQLException {
+        resultSet.next();
+        System.out.println("Total amount of USD deposits: " + resultSet.getInt("total_amount") + "$");
+    }
+
+// ---------------------------------------------------------Q21---------------------------------------------------------
+    @Given("Prepare and execute the query21.")
+    public void prepare_and_execute_the_query21() {
+
+    }
+    @Given("Process the results for query21.")
+    public void process_the_results_for_query21() {
+
+    }
+
+// ---------------------------------------------------------Q22---------------------------------------------------------
+    @Given("Prepare and execute the query22.")
+    public void prepare_and_execute_the_query22() {
+
+    }
+    @Given("Process the results for query22.")
+    public void process_the_results_for_query22() {
 
     }
 }
