@@ -49,14 +49,18 @@ INSERT INTO categories (id, name, description) VALUES(?, ?, ?)
 SELECT name FROM loan_plans WHERE (delay_value = 1 AND fixed_charge = 5) OR percent_charge = 3 LIMIT 3
 SELECT SUM(total_delay_charge) AS total_amount FROM gateway_currencies WHERE loan_id = 1 GROUP BY loan_id
 SELECT COUNT(id) AS total_users FROM admin_notifications WHERE is_read = 1 AND user_id = 1
-UPDATE admin_password_resets SET status = 1 WHERE email = 'carey.bailey@hotmail.com']]></console>
+UPDATE admin_password_resets SET status = 1 WHERE email = 'carey.bailey@hotmail.com'
+
+SELECT subject FROM support_tickets WHERE ticket LIKE '4%']]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="3e35cd49-5296-4722-ac2b-e2ab5923a14c" object-ref="consoles/wiseDB" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="3e35cd49-5296-4722-ac2b-e2ab5923a14c" />

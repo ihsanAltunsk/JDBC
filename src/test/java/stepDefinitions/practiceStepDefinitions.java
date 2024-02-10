@@ -88,7 +88,6 @@ public class practiceStepDefinitions {
     public void prepare_and_execute_the_query05() throws SQLException {
         query = queryManage.getPracticeQuery05();
         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
-
         preparedStatement.setString(1,"4%");
         resultSet = preparedStatement.executeQuery();
     }
@@ -114,8 +113,8 @@ public class practiceStepDefinitions {
         expectedSubject.add("deneme");
         expectedSubject.add("Test Ticket1");
 
-        for (String each : actualSubject) {
-            assertTrue(expectedSubject.contains(each));
+        for (int i = 0; i < actualSubject.size() ; i++) {
+            assertTrue(expectedSubject.contains(actualSubject.get(i)));
         }
     }
 

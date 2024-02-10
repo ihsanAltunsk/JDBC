@@ -21,8 +21,8 @@ Feature: JDBC Practice
     * Process the results for query03.
     * Close the database connection.
 
-  Scenario: 4- Verify the "support_ticket_id" for the data in the "Support_messages"
-            table with "?" in the "message" field.
+  Scenario: 4- Verify the "support_ticket_id" for the data in the "support_messages"
+            table with "automation" in the "message" field.
     * Prepare and execute the query04.
     * Process the results for query04.
     * Close the database connection.
