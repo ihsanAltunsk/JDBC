@@ -321,11 +321,17 @@ public class practiceStepDefinitions {
 
 // ---------------------------------------------------------Q19---------------------------------------------------------
     @Given("Prepare and execute the query19.")
-    public void prepare_and_execute_the_query19() {
-
+    public void prepare_and_execute_the_query19() throws SQLException {
+        query = queryManage.getPracticeQuery19();
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,1);
+        preparedStatement.setString(2,"2023-12-21");
+        preparedStatement.setString(3,"2023-12-30");
+        resultSet = preparedStatement.executeQuery();
     }
     @Given("Process the results for query19.")
-    public void process_the_results_for_query19() {
-
+    public void process_the_results_for_query19() throws SQLException {
+        resultSet.next();
+        System.out.println("Total amount between 2023-12-21 and 2023-12-30: " + resultSet.getInt("total_amount"));
     }
 }
